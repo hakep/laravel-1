@@ -20,6 +20,6 @@ elixir(mix => {
         //    '../../../node_modules/tether/dist/js/tether.js',
         //    '../../../node_modules/bootstrap/dist/js/bootstrap.js',
         //], 'public/js/app.js');
-       .webpack('app.js');
+       //.webpack('app.js');
 });
 
