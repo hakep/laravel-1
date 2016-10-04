@@ -5060,55 +5060,39 @@ a.text-danger:focus, a.text-danger:hover {
     display: none !important; } }
 
 html {
-  min-height: 100%;
-  display: -webkit-box;
-  display: flex; }
+  height: 100%; }
 
 body {
+  position: relative;
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding-right: 0px !important;
   background: #f3f3f3;
   font: 1.4rem/1.6rem Calibri;
   font-weight: 200;
   color: #000;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-flex: 1;
-  flex: auto; }
+  padding-bottom: 70px; }
 
-.wrapper {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-flex: 1;
-  flex: auto;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column; }
-
-header, .menu1, .sidebar-left, .content, footer {
+#header .row, .menu1, .sidebar-left, .content, #footer .row {
   background: #fff;
-  margin-top: 0px;
-  margin-bottom: 1rem;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
   border-radius: 0px; }
 
-header {
-  height: 100px;
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
+#header .row {
+  padding: 1rem 0;
   -webkit-box-align: center;
-  align-items: center;
-  max-width: 1140px; }
-  header .row {
-    -webkit-box-align: center;
-    align-items: center; }
-  header .logo {
-    border: 1px solid #fdf; }
-  header .devis {
-    border: 1px solid #fdf;
-    text-align: center; }
-  header .address {
-    border: 1px solid #fdf;
-    text-align: right; }
+  align-items: center; }
+
+#header .logo {
+  text-align: left; }
+
+#header .devis {
+  text-align: center; }
+
+#header .adress {
+  text-align: right; }
 
 .menu1 ul {
   -webkit-box-pack: justify;
@@ -5131,11 +5115,13 @@ header {
   -webkit-box-flex: 1;
   flex: auto; }
 
-footer {
-  text-align: center;
-  padding: 1rem 0rem;
-  margin-bottom: 0px;
-  -webkit-box-pack: center;
-  justify-content: center; }
+#footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%; }
+  #footer .row {
+    padding: 1rem 0rem;
+    -webkit-box-pack: center;
+    justify-content: center; }
 
 /*# sourceMappingURL=app.css.map */

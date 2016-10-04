@@ -1,50 +1,44 @@
-html{
-  min-height: 100%;
-  display: flex;
+html {
+  height: 100%;
 }
-body{
+
+body {
+  position: relative;
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding-right: 0px !important;
+
   background: #f3f3f3;
   font: 1.4rem/1.6rem Calibri;
   font-weight: 200;
   color: #000;
+  padding-bottom: 70px;
+}
 
-  display: flex;
-  flex: auto;
-}
-.wrapper{
-  display: flex;
-  flex: auto;
-  flex-direction: column;
-}
-header, .menu1, .sidebar-left, .content, footer {
+#header .row, .menu1, .sidebar-left, .content, #footer .row {
   background: #fff;
-  margin-top: 0px;
-  margin-bottom: 1rem;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .12), 0 1px 6px 0 rgba(0, 0, 0, .12);
   border-radius: 0px;
 }
 
-header {
-  height: 100px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  max-width: 1140px;
+#header {
+
   .row {
+    padding: 1rem 0;
     align-items: center;
   }
 
   .logo {
-    border: 1px solid #fdf;
+    text-align: left;
   }
 
   .devis {
-    border: 1px solid #fdf;
     text-align: center;
   }
 
-  .address {
-    border: 1px solid #fdf;
+  .adress {
     text-align: right;
   }
 }
@@ -67,14 +61,18 @@ header {
 
 }
 
-.wrapper-content{
+.wrapper-content {
   flex: auto;
 
 }
 
-footer{
-  text-align: center;
-  padding: 1rem 0rem;
-  margin-bottom: 0px;
-  justify-content: center;
+#footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+
+  .row {
+    padding: 1rem 0rem;
+    justify-content: center;
+  }
 }

@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
     <title>@yield('title')</title>
 </head>
-
 <body>
-<div class="wrapper">
+
 @include('site.components.header')
+
 @include('site.components.menu1')
 
 @yield('content')
 
 @include('site.components.footer')
-</div>
+
 <script src="{{ url('js/app.js') }}"></script>
 </body>
 </html>
