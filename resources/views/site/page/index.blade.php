@@ -6,7 +6,7 @@
 
 <section class="container wrapper-content">
     <div class="row">
-        <div class="col-md-3 p-l-0">
+        <div class="col-md-2 p-l-0">
             <div class="sidebar-left">
                 <ul class="nav nav-pills nav-stacked">
                     <li class="nav-item"><a class="nav-link" href="#">sidebar 1</a></li>
@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="col-md-9 p-a-0">
+        <div class="col-md-10 p-a-0">
             <div class="content p-a-1">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa deleniti magnam officiis reiciendis
                 reprehenderit perspiciatis, est libero rerum in qui, eum, iusto vitae. Adipisci ut modi, minus, enim
@@ -33,7 +33,7 @@
                 repudiandae delectus rem voluptatum dolorum odit quae voluptatibus voluptates labore, animi quis
                 rerum
                 tempora. Veniam optio veritatis, sit deleniti natus?
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>1111
+                1111
             </div>
         </div>
     </div>

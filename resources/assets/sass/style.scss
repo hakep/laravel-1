@@ -17,7 +17,7 @@ body {
   padding-bottom: 70px;
 }
 
-#header .row, .menu1, .sidebar-left, .content, #footer .row {
+#header .row, #menu1 .collapse, .sidebar-left, .content, #footer {
   background: #fff;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .12), 0 1px 6px 0 rgba(0, 0, 0, .12);
   border-radius: 0px;
@@ -43,22 +43,21 @@ body {
   }
 }
 
-.menu1 {
+#menu1 {
+  margin: 1rem 0;
 
   ul {
     justify-content: space-between;
-    flex: 1 1 auto;
-  }
-  .collapse {
-    flex: 1 1 auto;
-  }
-  li {
-    text-align: center;
-    padding: 0px 10px;
-    margin: 0px !important;
-    flex: 1 1 auto;
-  }
 
+    &>li {
+      text-align: center;
+      margin: 0px !important;
+      align-items: stretch;
+      &>a {
+        padding: 16px 16px;
+      }
+    }
+  }
 }
 
 .wrapper-content {
