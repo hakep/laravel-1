@@ -15,11 +15,13 @@ require('laravel-elixir-vue');
 
 elixir(mix => {
     mix.sass('app.scss')
+        .sass('admin.scss', 'public/css/admin/admin.css')
+        .webpack('admin.js', 'public/js/admin/admin.js')
         //.scripts([
         //    '../../../node_modules/jquery/dist/jquery.js',
         //    '../../../node_modules/tether/dist/js/tether.js',
         //    '../../../node_modules/bootstrap/dist/js/bootstrap.js',
-        //], 'public/js/app.js');
-       //.webpack('app.js');
+        //], 'public/js/app.js')
+       .webpack('app.js')
 });
 

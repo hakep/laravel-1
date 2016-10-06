@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('site.page.index');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'web'], function(){
-    Route::get('home', function(){
-       return 'Hello';
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('/', function(){
+       return view('admin.page.index');
     });
 });

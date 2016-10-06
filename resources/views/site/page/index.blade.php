@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="container wrapper-content">
+<section class="container">
     <div class="row">
         <div class="col-md-2 p-l-0">
             <div class="sidebar-left">

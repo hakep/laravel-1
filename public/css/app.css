@@ -5107,10 +5107,6 @@ body {
       #menu1 ul > li > a {
         padding: 16px 16px; }
 
-.wrapper-content {
-  -webkit-box-flex: 1;
-  flex: auto; }
-
 #footer {
   position: absolute;
   bottom: 0px;
