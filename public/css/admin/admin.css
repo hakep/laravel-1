@@ -5124,7 +5124,19 @@ body {
   -webkit-transition: all 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
   transition: all 0.5s cubic-bezier(0.65, 0.05, 0.36, 1); }
 
+.wrapper-transition {
+  position: relative;
+  -webkit-transition: all 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+  left: 300px; }
+
 .slide-enter, .slide-leave {
   left: -100% !important; }
+
+.wrapper-enter, .wrapper-leave {
+  left: 0 !important; }
+
+.admin .wrapper_content {
+  margin-top: 60px; }
 
 /*# sourceMappingURL=admin.css.map */

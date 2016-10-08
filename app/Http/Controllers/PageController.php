@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,7 +16,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('admin.page.index');
+        $pages = Page::all();
+//        dd($pages);
+        return view('admin.page.index')->with('pages', $pages);
     }
 
     /**

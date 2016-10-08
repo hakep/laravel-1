@@ -1,8 +1,9 @@
 <?php
 
+use App\Page;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class PagesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(PagesTableSeeder::class);
+        Page::truncate();
+
+        factory(Page::class, 20)->create();
     }
 }
