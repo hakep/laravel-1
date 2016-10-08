@@ -16,7 +16,10 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin'], function(){
+
     Route::get('/', function(){
-       return view('admin.page.index');
+       return view('admin.index');
     });
+
+    Route::resource('page', 'PageController');
 });
