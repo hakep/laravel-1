@@ -12,9 +12,11 @@
 
 @include('admin.components.header')
 
+<div class="wrapper-content">
 @include('admin.components.aside')
 
 @yield('content')
+</div>
 
 <script src="{{ url('js/admin/admin.js') }}"></script>
 </body>

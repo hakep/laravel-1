@@ -1,3 +1,3 @@
 <header id="header">
-    <button @click="show = !show">&#9776;</button> <a href="/admin">Панель управления</a>
+    <button><i class="fa fa-bars" aria-hidden="true"></i></button> <a href="/admin">ПАНЕЛЬ</a>
 </header>
