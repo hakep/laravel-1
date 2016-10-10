@@ -1,5 +1,9 @@
-$color1: #000;
-$colorHover1: #ff0000;
+$color1: #aaa;
+$colorHover1: #fff;
+$background-color1:#333;
+$color2: #000;
+$colorHover2: #ff0000;
+$background-color2:#ff0000;
 
 html {
   height: 100%;
@@ -21,21 +25,23 @@ body {
 }
 
 a {
-  color: $color1;
-    &:hover, &:focus {
+  //color: $color1;
+  &:hover, &:focus {
     color: $colorHover1;
     text-decoration: none;
   }
 }
 
-h1{
-  display: inline-block;
+h2 {
+  //display: inline-block;
   color: $color1;
   text-transform: uppercase;
-  //font-style: italic;
-  border-bottom: 3px dotted $colorHover1;
+  text-align: right;
+  margin-bottom: 0.3rem;
+  padding-right: 0.5rem;
+  font-weight: 100;
+  //border-bottom: 3px dotted $colorHover1;
 }
-
 
 #header {
   width: 100%;
@@ -60,7 +66,6 @@ h1{
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
     margin-right: 1rem;
-
     &:active {
       background-color: rgba(0, 0, 0, 0.1);
     }
@@ -71,7 +76,7 @@ h1{
 }
 
 .wrapper-content {
-  margin-top: 60px;
+  padding-top: 60px;
 
   &.hide-aside {
     #aside {
@@ -81,35 +86,40 @@ h1{
       }
     }
     .content {
-      margin-left: 100px;
+      margin-left: 72px;
     }
   }
 }
 
 #aside {
-  background-color: #fff;
+  background-color: $background-color1;
   width: 200px;
   position: fixed;
   top: 50px;
   left: 0%;
   bottom: 0;
   z-index: 1;
-  padding-top: 1rem;
-  padding-left: 1rem;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
   ul {
     margin: 0px;
     padding: 0px;
     list-style: none;
-    li {
-      margin-bottom: 2rem;
-      a {
-        display: inline-block;
-        vertical-align: middle;
-        i {
-          font-size: 2rem;
-          margin-right: 1rem;
-        }
+    a {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid $color1;
+      color: $color1;
+      &:hover, &:focus {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-left: 5px solid $colorHover1;
+        padding-left: 0.72rem;
+        color: $colorHover1;
+      }
+      i {
+        font-size: 2rem;
+        margin-right: 1rem;
       }
     }
   }

@@ -16,7 +16,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
+        $pages = Page::paginate(10);
 //        dd($pages);
         return view('admin.page.index')->with('pages', $pages);
     }
