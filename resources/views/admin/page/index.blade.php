@@ -4,13 +4,18 @@
 
 @section('content')
 <section class="content">
-    <h2>Страницы</h2>
+    <div class="panel-page">
+        <h4>Список страниц</h4>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> ДОБАВИТЬ СТРАНИЦУ</button>
+        </div>
+    </div>
     <table class="table table-hover table-bordered table-striped">
         <colgroup>
             <col width="50">
             <col>
             <col width="250">
-            <col>
+            <col width="200">
         </colgroup>
         <thead class="thead-inverse">
         <tr>

@@ -5075,14 +5075,17 @@ body {
   color: #000;
   padding-bottom: 70px; }
 
-a:hover, a:focus {
-  color: #fff;
-  text-decoration: none; }
+a {
+  color: #000; }
+  a:hover, a:focus {
+    color: #3097D1;
+    text-decoration: none; }
 
-h2 {
-  color: #aaa;
+h4 {
+  color: #666;
   text-transform: uppercase;
-  text-align: right;
+  line-height: 40px;
+  float: right;
   margin-bottom: 0.3rem;
   padding-right: 0.5rem;
   font-weight: 100; }
@@ -5094,7 +5097,7 @@ h2 {
   top: 0;
   left: 0;
   z-index: 100;
-  background-color: #fff;
+  background-color: #333;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.95);
   padding: 0px 16px;
   overflow: hidden; }
@@ -5104,25 +5107,28 @@ h2 {
     line-height: 50px;
     font-size: 30px;
     outline: none;
-    color: #9f9f9f;
+    color: #aaa;
     cursor: pointer;
     border-radius: 50%;
     -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    margin-right: 1rem; }
-    #header button:active {
-      background-color: rgba(0, 0, 0, 0.1); }
+    transition: all 0.3s ease-in-out; }
+    #header button:hover, #header button:focus {
+      color: #fff; }
   #header a {
+    color: #aaa;
+    line-height: 50px;
     font-size: 32px; }
+    #header a:hover, #header a:focus {
+      color: #fff; }
 
 .wrapper-content {
-  padding-top: 60px; }
+  padding-top: 50px; }
   .wrapper-content.hide-aside #aside {
     width: 70px; }
     .wrapper-content.hide-aside #aside span {
       display: none; }
   .wrapper-content.hide-aside .content {
-    margin-left: 72px; }
+    margin-left: 70px; }
 
 #aside {
   background-color: #333;
@@ -5157,5 +5163,10 @@ h2 {
 
 .content {
   margin-left: 200px; }
+
+.panel-page {
+  padding-top: 5px;
+  height: 50px;
+  background: #333; }
 
 /*# sourceMappingURL=admin.css.map */

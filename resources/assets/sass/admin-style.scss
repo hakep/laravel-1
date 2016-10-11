@@ -2,7 +2,7 @@ $color1: #aaa;
 $colorHover1: #fff;
 $background-color1:#333;
 $color2: #000;
-$colorHover2: #ff0000;
+$colorHover2: #3097D1;
 $background-color2:#ff0000;
 
 html {
@@ -25,22 +25,21 @@ body {
 }
 
 a {
-  //color: $color1;
+  color: $color2;
   &:hover, &:focus {
-    color: $colorHover1;
+    color: $colorHover2;
     text-decoration: none;
   }
 }
 
-h2 {
-  //display: inline-block;
-  color: $color1;
+h4 {
+  color: #666;
   text-transform: uppercase;
-  text-align: right;
+  line-height: 40px;
+  float: right;
   margin-bottom: 0.3rem;
   padding-right: 0.5rem;
   font-weight: 100;
-  //border-bottom: 3px dotted $colorHover1;
 }
 
 #header {
@@ -50,7 +49,7 @@ h2 {
   top: 0;
   left: 0;
   z-index: 100;
-  background-color: #fff;
+  background-color: $background-color1;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.95);
   padding: 0px 16px;
   overflow: hidden;
@@ -61,22 +60,26 @@ h2 {
     line-height: 50px;
     font-size: 30px;
     outline: none;
-    color: #9f9f9f;
+    color: $color1;
     cursor: pointer;
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
-    margin-right: 1rem;
-    &:active {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
+    &:hover, &:focus {
+       color: $colorHover1;
+     }
   }
   a {
+    color: $color1;
+    line-height: 50px;
     font-size: 32px;
+    &:hover, &:focus {
+      color: $colorHover1;
+    }
   }
 }
 
 .wrapper-content {
-  padding-top: 60px;
+  padding-top: 50px;
 
   &.hide-aside {
     #aside {
@@ -86,7 +89,7 @@ h2 {
       }
     }
     .content {
-      margin-left: 72px;
+      margin-left: 70px;
     }
   }
 }
@@ -127,5 +130,11 @@ h2 {
 
 .content {
   margin-left: 200px;
+}
+.panel-page{
+ padding-top:5px;
+  height: 50px;
+  //widows: 100%;
+  background: $background-color1;
 }
 
