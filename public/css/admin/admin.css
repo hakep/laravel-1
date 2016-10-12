@@ -2605,12 +2605,12 @@ input[type="button"].btn-block {
   opacity: 0; }
   .custom-control-input:checked ~ .custom-control-indicator {
     color: #fff;
-    background-color: #0074d9; }
+    background-color: #333; }
   .custom-control-input:focus ~ .custom-control-indicator {
-    box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #0074d9; }
+    box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #666; }
   .custom-control-input:active ~ .custom-control-indicator {
     color: #fff;
-    background-color: #84c6ff; }
+    background-color: #888; }
   .custom-control-input:disabled ~ .custom-control-indicator {
     cursor: not-allowed;
     background-color: #eee; }
@@ -3293,8 +3293,8 @@ input[type="button"].btn-block {
     z-index: 2;
     color: #fff;
     cursor: default;
-    background-color: #3097D1;
-    border-color: #3097D1; }
+    background-color: #333;
+    border-color: #333; }
   .page-item.disabled .page-link, .page-item.disabled .page-link:focus, .page-item.disabled .page-link:hover {
     color: #818a91;
     pointer-events: none;
@@ -3307,7 +3307,7 @@ input[type="button"].btn-block {
   float: left;
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
-  color: #3097D1;
+  color: #333;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd; }
@@ -5072,8 +5072,7 @@ body {
   background: #f5f5f5;
   font: 1.4rem/1.6rem Calibri;
   font-weight: 200;
-  color: #000;
-  padding-bottom: 70px; }
+  color: #000; }
 
 a {
   color: #000; }
@@ -5168,5 +5167,14 @@ h4 {
   padding-top: 5px;
   height: 50px;
   background: #333; }
+
+.table td {
+  vertical-align: middle; }
+  .table td .custom-control-indicator {
+    width: 2rem;
+    height: 100%; }
+
+.pagination {
+  padding-left: 3rem; }
 
 /*# sourceMappingURL=admin.css.map */

@@ -9,26 +9,15 @@ use App\Http\Requests;
 
 class PageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $pages = Page::paginate(10);
-//        dd($pages);
-        return view('admin.page.index')->with('pages', $pages);
+        return view('admin.pages.index')->with('pages', $pages);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**

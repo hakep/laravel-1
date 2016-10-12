@@ -21,7 +21,6 @@ body {
   font: 1.4rem/1.6rem Calibri;
   font-weight: 200;
   color: #000;
-  padding-bottom: 70px;
 }
 
 a {
@@ -131,10 +130,22 @@ h4 {
 .content {
   margin-left: 200px;
 }
+
 .panel-page{
  padding-top:5px;
   height: 50px;
-  //widows: 100%;
   background: $background-color1;
 }
 
+.table td{
+  vertical-align: middle;
+  .custom-control-indicator{
+    width: 2rem;
+    height: 100%;
+  }
+}
+
+.pagination{
+  padding-left:3rem;
+
+}

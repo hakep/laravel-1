@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('site.page.index');
+    return view('site.pages.index');
 });
 
 Route::group(['prefix' => 'admin'], function(){
@@ -21,5 +21,5 @@ Route::group(['prefix' => 'admin'], function(){
        return view('admin.index');
     });
 
-    Route::resource('page', 'PageController');
+    Route::resource('pages', 'PageController');
 });

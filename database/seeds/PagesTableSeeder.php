@@ -14,6 +14,6 @@ class PagesTableSeeder extends Seeder
     {
         Page::truncate();
 
-        factory(Page::class, 20)->create();
+        factory(Page::class, 40)->create();
     }
 }
