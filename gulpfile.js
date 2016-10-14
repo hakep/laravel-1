@@ -1,7 +1,7 @@
 const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue');
-
+elixir.config.sourcemaps = false;
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -14,14 +14,9 @@ require('laravel-elixir-vue');
  */
 
 elixir(mix => {
-    //mix.sass('app.scss')
-        mix.sass('admin.scss', 'public/css/admin/admin.css')
-        //.webpack('admin.js', 'public/js/admin/admin.js')
-        //.scripts([
-        //    '../../../node_modules/jquery/dist/jquery.js',
-        //    '../../../node_modules/tether/dist/js/tether.js',
-        //    '../../../node_modules/bootstrap/dist/js/bootstrap.js',
-        //], 'public/js/app.js')
-       //.webpack('app.js')
+    mix.sass('admin-vendor.scss', 'public/panel/css/vendor.css')
+    .sass('admin-style.scss', 'public/panel/css/style.css')
+    .webpack('admin-vendor.js', 'public/panel/js/vendor.js')
+    .scripts('admin-main.js', 'public/panel/js/main.js')
 });
 

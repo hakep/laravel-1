@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{ url('css/admin/admin.css') }}">
-    <link rel='stylesheet' href="{{ url('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('panel/css/vendor.css') }}">
+    <link rel='stylesheet' href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel='stylesheet' href="{{ asset('panel/css/style.css') }}">
     <title>@yield('title')</title>
 </head>
 <body class="admin">
@@ -18,6 +19,7 @@
 @yield('content')
 </div>
 
-<script src="{{ url('js/admin/admin.js') }}"></script>
+<script src="{{ asset('panel/js/vendor.js') }}"></script>
+<script src="{{ asset('panel/js/main.js') }}"></script>
 </body>
 </html>

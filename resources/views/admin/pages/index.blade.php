@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('admin.main')
 
 @section('title', 'Страницы')
 
@@ -39,7 +39,7 @@
                         </label>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-success btn-xs" data-toggle="tooltip" title="Перейти" data-original-title="Перейти">
+                        <a href="/" target="_blank" class="btn btn-success btn-xs" data-toggle="tooltip" title="Перейти" data-original-title="Перейти">
                             <i class="fa fa-forward"></i>
                         </a>
                         <a href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Редактировать" data-original-title="Редактировать">
