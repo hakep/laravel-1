@@ -20,6 +20,7 @@
 </div>
 
 <script src="{{ asset('panel/js/vendor.js') }}"></script>
+@stack('scripts')
 <script src="{{ asset('panel/js/main.js') }}"></script>
 </body>
 </html>

@@ -30,7 +30,7 @@
             @foreach($pages as $page)
                 <tr>
                     <td>{{ $page->id }}</td>
-                    <td><a href="#">{{ $page->title }}</a></td>
+                    <td><a href="{{ route('pages.show', $page->id) }}">{{ $page->title }}</a></td>
                     <td class="text-xs-center">
                         <label class="custom-control custom-checkbox">
                             <input type="checkbox"
