@@ -17,6 +17,11 @@ elixir(mix => {
     mix.sass('admin-vendor.scss', 'public/panel/css/vendor.css')
     .sass('admin-style.scss', 'public/panel/css/style.css')
     .webpack('admin-vendor.js', 'public/panel/js/vendor.js')
-    .scripts('admin-main.js', 'public/panel/js/main.js')
+    .scripts('admin-main.js', 'public/panel/js/main.js');
+    mix.copy('resources/assets/vendor/ace-builds-master/src-min-noconflict/ace.js', 'public/panel/js/ace/ace.js')
+        .copy('resources/assets/vendor/emmet.js', 'public/panel/js/ace/emmet.js')
+        .copy('resources/assets/vendor/ace-builds-master/src-min-noconflict/ext-emmet.js', 'public/panel/js/ace/ext-emmet.js')
+        .copy('resources/assets/vendor/ace-builds-master/src-min-noconflict/mode-html.js', 'public/panel/js/ace/mode-html.js')
+        .copy('resources/assets/vendor/ace-builds-master/src-min-noconflict/theme-monokai.js', 'public/panel/js/ace/theme-monokai.js')
 });
 
