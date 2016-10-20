@@ -1,0 +1,21 @@
+{
+  "name": "laravel",
+  "description": "",
+  "main": "",
+  "authors": [
+    "OZ"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/hakep/laravel-1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ace-builds": "^1.2.5",
+    "emmet-core": "emmet-core-js#*"
+  }
+}
