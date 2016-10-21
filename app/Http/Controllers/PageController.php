@@ -34,39 +34,38 @@ class PageController extends Controller
 
     public function show($id)
     {
-        $page = Page::Find($id);
-        return view('admin.pages.show')->with('page', $page);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $page = Page::Find($id);
+        return view('admin.pages.edit')->with('page', $page);
     }
 
 
     public function update(Request $request, $id)
     {
         $page = Page::findOrFail($id);
-        $page->update($request->all());
-//        dd($request->all());
 
+//        если нажата кнопка delete, то удаляем модель
+        if ($request->has('delete')) {
+            $page->delete();
+            return redirect()->route('pages.index');
+        }
+
+        $page = Page::findOrFail($id);
+        $page->update($request->all());
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function destroy($id)
     {
-        //
+        $page = Page::findOrFail($id);
+        $page->delete();
+        return redirect()->route('pages.index');
     }
 }

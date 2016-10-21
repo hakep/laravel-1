@@ -5,9 +5,9 @@
 @section('content')
     <section class="content">
         <div class="panel-page">
-            <h4>Создать страницу</h4>
-            <div class="btn-group" role="group">
-                <a href="{{ URL::previous() }}" class="btn btn-primary"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
+            <h4>СОЗДАНИЕ СТРАНИЦЫ</h4>
+            <div class="btn-group">
+                <a href="{{ URL::previous() }}" class="btn btn-outline-secondary"><i class="fa fa-step-backward"></i> НАЗАД</a>
             </div>
         </div>
 

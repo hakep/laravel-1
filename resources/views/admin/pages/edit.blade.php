@@ -8,35 +8,33 @@
         {{ method_field('PUT') }}
         {{ csrf_field() }}
         <div class="panel-page">
-            <h4>Редактировать страницу</h4>
-            <div class="btn-group" role="group">
-                <a href="{{ URL::previous() }}" class="btn btn-primary"><i class="fa fa-step-backward"
-                                                                           aria-hidden="true"></i></a>
-                <button type="submit" name="save" value="save_and_continue" class="btn btn-primary btn-flat">
-                    <i class="fa fa-check"></i> Save contact
-                </button>
+            <h4>РЕДАКТИРОВАНИЕ СТРАНИЦЫ</h4>
+            <div class="btn-group">
+                <a href="{{ URL::previous() }}" class="btn btn-outline-secondary"><i class="fa fa-step-backward"></i> НАЗАД</a>
+                <button type="submit" name="save" value="save" class="btn btn-outline-primary"><i class="fa fa-check"></i> СОХРАНИТЬ</button>
+                <button type="submit" name="delete" value="delete" class="btn btn-outline-danger"><i class="fa fa-trash"></i> УДАЛИТЬ</button>
             </div>
         </div>
 
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Код</a>
+                <a class="nav-link active" data-toggle="tab" href="#home">Код</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Редактор</a>
+                <a class="nav-link" data-toggle="tab" href="#profile">Редактор</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Настройки</a>
+                <a class="nav-link" data-toggle="tab" href="#messages">Настройки</a>
             </li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane fade in active" id="home" role="tabpanel">
+            <div class="tab-pane fade in active" id="home">
                 <textarea name="content" style="display: none;"></textarea>
                 <div id="editor">{{ $page->content }}</div>
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel">2</div>
-            <div class="tab-pane fade" id="messages" role="tabpanel">3</div>
+            <div class="tab-pane fade" id="profile">2</div>
+            <div class="tab-pane fade" id="messages">3</div>
         </div>
     </form>
 </section>
