@@ -5,7 +5,7 @@
 @section('content')
     <section class="content">
         <div class="panel-page">
-            <h4>Список страниц</h4>
+            <h4>СПИСОК СТРАНИЦ</h4>
             <div class="btn-group">
                 <a href="{{ route('pages.create') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i> ДОБАВИТЬ СТРАНИЦУ</a>
             </div>

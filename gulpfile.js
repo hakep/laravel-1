@@ -2,16 +2,6 @@ const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue');
 elixir.config.sourcemaps = false;
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
 
 elixir(mix => {
     mix.sass('admin-vendor.scss', 'public/panel/css/vendor.css')
@@ -25,5 +15,9 @@ elixir(mix => {
         .copy('bower_components/ace-builds/src-min-noconflict/ext-emmet.js', 'public/panel/js/ace/ext-emmet.js')
         .copy('bower_components/ace-builds/src-min-noconflict/mode-html.js', 'public/panel/js/ace/mode-html.js')
         .copy('bower_components/ace-builds/src-min-noconflict/theme-monokai.js', 'public/panel/js/ace/theme-monokai.js')
+
+    //добавляем шрифт
+    mix.copy('bower_components/components-font-awesome/fonts/', 'public/panel/fonts/')
+
 });
 

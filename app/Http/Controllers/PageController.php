@@ -15,17 +15,13 @@ class PageController extends Controller
         return view('admin.pages.index')->with('pages', $pages);
     }
 
+
     public function create()
     {
         return view('admin.pages.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
@@ -34,7 +30,7 @@ class PageController extends Controller
 
     public function show($id)
     {
-
+        // не используется
     }
 
 
@@ -48,18 +44,14 @@ class PageController extends Controller
     public function update(Request $request, $id)
     {
         $page = Page::findOrFail($id);
-
-//        если нажата кнопка delete, то удаляем модель
+        // если нажата кнопка delete, то удаляем модель
         if ($request->has('delete')) {
             $page->delete();
             return redirect()->route('pages.index');
         }
-
-        $page = Page::findOrFail($id);
         $page->update($request->all());
         return redirect()->back();
     }
-
 
 
     public function destroy($id)

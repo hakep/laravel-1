@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "ace-builds": "^1.2.5",
-    "emmet-core": "emmet-core-js#*"
+    "emmet-core": "emmet-core-js#*",
+    "components-font-awesome": "^4.6.3"
   }
 }
