@@ -45,7 +45,7 @@ a {
   padding: 0px 16px;
   overflow: hidden;
 
-  button {
+  #button-aside {
     background-color: transparent;
     border: 0px;
     line-height: 50px;
@@ -59,7 +59,7 @@ a {
        color: $colorHover1;
      }
   }
-  a {
+  a.home {
     color: $color1;
     line-height: 50px;
     font-size: 32px;
@@ -70,7 +70,7 @@ a {
 }
 
 .wrapper-content {
-  padding-top: 50px;
+  padding-top: 52px;
   position: relative;
   padding-left: 200px;
 
@@ -159,4 +159,24 @@ a {
   bottom: 0;
   left: 0;
   height: 500px;
+}
+
+.nav-tabs .nav-item.open .nav-link, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover, .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover {
+  color: #e2e5e8;
+  background-color: #333333;
+  box-shadow: 2px 0px 12px -2px #333;
+}
+.nav-tabs .nav-link {
+  padding: 0.35em .7em;
+  font-size:1.1rem;
+  border-top-right-radius: 1rem;
+}
+
+.xxx{
+  position: absolute;
+  top:4px;
+  left: 200px;
+}
+.xxx-left{
+  left: 70px;
 }

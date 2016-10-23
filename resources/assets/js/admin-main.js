@@ -8,6 +8,7 @@
 //    }
 //});
 
-$('#header button').on('click', function (event){
+$('#header #button-aside').on('click', function (){
     $('.wrapper-content').toggleClass("hide-aside");
+    $('.xxx').toggleClass("xxx-left");
 });
