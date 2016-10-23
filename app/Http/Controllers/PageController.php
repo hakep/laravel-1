@@ -15,64 +15,49 @@ class PageController extends Controller
         return view('admin.pages.index')->with('pages', $pages);
     }
 
+
     public function create()
     {
         return view('admin.pages.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+        // не используется
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $page = Page::Find($id);
+        return view('admin.pages.edit')->with('page', $page);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $page = Page::findOrFail($id);
+        // если нажата кнопка delete, то удаляем модель
+        if ($request->has('delete')) {
+            $page->delete();
+            return redirect()->route('pages.index');
+        }
+        $page->update($request->all());
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $page = Page::findOrFail($id);
+        $page->delete();
+        return redirect()->route('pages.index');
     }
 }

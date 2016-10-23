@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.15 on 2016-10-02.
+ * Generated for Laravel 5.3.19 on 2016-10-18.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -3810,7 +3810,7 @@ namespace {
          * @throws \InvalidArgumentException
          * @static 
          */
-        public static function paginate($perPage = null, $columns = array(), $pageName = 'pages', $page = null){
+        public static function paginate($perPage = null, $columns = array(), $pageName = 'page', $page = null){
             return \Illuminate\Database\Eloquent\Builder::paginate($perPage, $columns, $pageName, $page);
         }
         
@@ -3824,7 +3824,7 @@ namespace {
          * @return \Illuminate\Contracts\Pagination\Paginator 
          * @static 
          */
-        public static function simplePaginate($perPage = null, $columns = array(), $pageName = 'pages', $page = null){
+        public static function simplePaginate($perPage = null, $columns = array(), $pageName = 'page', $page = null){
             return \Illuminate\Database\Eloquent\Builder::simplePaginate($perPage, $columns, $pageName, $page);
         }
         
@@ -3877,7 +3877,7 @@ namespace {
         /**
          * Add a basic where clause to the query.
          *
-         * @param string $column
+         * @param string|\Closure $column
          * @param string $operator
          * @param mixed $value
          * @param string $boolean
@@ -3891,7 +3891,7 @@ namespace {
         /**
          * Add an "or where" clause to the query.
          *
-         * @param string $column
+         * @param string|\Closure $column
          * @param string $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder|static 
@@ -4870,7 +4870,7 @@ namespace {
         }
         
         /**
-         * Set the limit and offset for a given pages.
+         * Set the limit and offset for a given page.
          *
          * @param int $page
          * @param int $perPage
@@ -4882,7 +4882,7 @@ namespace {
         }
         
         /**
-         * Constrain the query to the next "pages" of results after a given ID.
+         * Constrain the query to the next "page" of results after a given ID.
          *
          * @param int $perPage
          * @param int $lastId
@@ -8397,7 +8397,7 @@ namespace {
          * Suppose that an index.php file instantiates this request object:
          * 
          *  * http://localhost/index.php         returns an empty string
-         *  * http://localhost/index.php/pages    returns an empty string
+         *  * http://localhost/index.php/page    returns an empty string
          *  * http://localhost/web/index.php     returns '/web'
          *  * http://localhost/we%20b/index.php  returns '/we%20b'
          *

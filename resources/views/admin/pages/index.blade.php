@@ -5,10 +5,9 @@
 @section('content')
     <section class="content">
         <div class="panel-page">
-            <h4>Список страниц</h4>
-            <div class="btn-group" role="group">
-                <a href="{{ route('pages.create') }}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> ДОБАВИТЬ
-                    СТРАНИЦУ</a>
+            <h4>СПИСОК СТРАНИЦ</h4>
+            <div class="btn-group">
+                <a href="{{ route('pages.create') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i> ДОБАВИТЬ СТРАНИЦУ</a>
             </div>
         </div>
         <table class="table table-sm table-hover table-bordered table-striped">
@@ -30,7 +29,7 @@
             @foreach($pages as $page)
                 <tr>
                     <td>{{ $page->id }}</td>
-                    <td><a href="#">{{ $page->title }}</a></td>
+                    <td><a href="{{ route('pages.edit', $page->id) }}">{{ $page->title }}</a></td>
                     <td class="text-xs-center">
                         <label class="custom-control custom-checkbox">
                             <input type="checkbox"
@@ -39,15 +38,16 @@
                         </label>
                     </td>
                     <td>
-                        <a href="/" target="_blank" class="btn btn-success btn-xs" data-toggle="tooltip" title="Перейти" data-original-title="Перейти">
+                        <a href="/" target="_blank" class="btn btn-success btn-xs" data-toggle="tooltip" title="Перейти">
                             <i class="fa fa-forward"></i>
                         </a>
-                        <a href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Редактировать" data-original-title="Редактировать">
+                        <a href="{{ route('pages.edit', $page->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Редактировать">
                             <i class="fa fa-pencil"></i>
                         </a>
-                        <a href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" title="Удалить" data-original-title="Удалить">
-                            <i class="fa fa-trash"></i>
-                        </a>
+
+                        <form style="display: inline;" action="{{ route('pages.destroy', $page->id) }}" method="POST">{{ method_field('DELETE') }} {{ csrf_field() }}
+                            <button type="submit" class="btn btn-danger" data-toggle="tooltip" title="Удалить"><i class="fa fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
