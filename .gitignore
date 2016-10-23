@@ -1,7 +1,6 @@
 /node_modules
 /bower_components
 /public/storage
-/bower_components
 /vendor
 /.idea
 Homestead.json
