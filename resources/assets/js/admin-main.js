@@ -10,5 +10,6 @@
 
 $('#header #button-aside').on('click', function (){
     $('.wrapper-content').toggleClass("hide-aside");
-    $('.xxx').toggleClass("xxx-left");
+    $('.panel-page').toggleClass("panel-page-left");
 });
+

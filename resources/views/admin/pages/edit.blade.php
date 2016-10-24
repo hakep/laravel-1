@@ -7,45 +7,56 @@
         <form action="{{ route('pages.update', $page->id) }}" method="POST" id="edit">
             {{ method_field('PUT') }}
             {{ csrf_field() }}
-            {{--<div class="panel-page">--}}
-                {{--<h4>РЕДАКТИРОВАНИЕ СТРАНИЦЫ</h4>--}}
-                {{--<div class="btn-group">--}}
-                    {{--<a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i--}}
-                                {{--class="fa fa-step-backward"></i></a>--}}
-                    {{--<button type="submit" name="save" value="save" class="btn btn-outline-success"><i--}}
-                                {{--class="fa fa-check"></i> СОХРАНИТЬ--}}
-                    {{--</button>--}}
-                    {{--<button type="submit" name="delete" value="delete" class="btn btn-outline-danger"><i--}}
-                                {{--class="fa fa-trash"></i> УДАЛИТЬ--}}
-                    {{--</button>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
+            @section('panel-page')
+            <div class="btn-group panel-page">
+                <a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i class="fa fa-step-backward"></i></a>
+                <button v-on:click="save" type="submit" name="save" value="save" class="btn btn-outline-success"><i class="fa fa-check"></i> СОХРАНИТЬ</button>
+                <button v-on:click="del" type="submit" name="delete" value="delete" class="btn btn-outline-danger"><i class="fa fa-trash"></i> УДАЛИТЬ</button>
+            </div>
+            @endsection
             <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home">КОД</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#profile">РЕДАКТОР</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#messages">НАСТРОЙКИ</a>
-                </li>
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab1">КОД</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab3">НАСТРОЙКИ</a></li>
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="home">
+                <div class="tab-pane fade in active" id="tab1">
                     <textarea name="content" style="display: none;"></textarea>
                     <div id="editor">{{ $page->content }}</div>
                 </div>
-                <div class="tab-pane fade" id="profile">2</div>
-                <div class="tab-pane fade" id="messages">3</div>
+                <div class="tab-pane fade" id="tab2">2</div>
+                <div class="tab-pane fade" id="tab3">3</div>
             </div>
         </form>
     </section>
 @endsection
 
 @push('scripts')
+<script>
+    window.Laravel = { csrfToken: '{{ csrf_token() }}' };
+    var formData = new FormData();
+    console.log(formData.getAll($("#edit")));
+
+    new Vue({
+        el: '.panel-page',
+        data: {
+            message: 'Сохранение'
+        },
+        methods: {
+            save: function(){
+
+                   this.$http.patch('{{ route('pages.update', $page->id) }}', formData).then((response) => {
+                        console.log(response.body);
+                    });
+
+            },
+            del: function(){
+                console.log("Удаление");
+            }
+        }
+    });
+</script>
 <script src="{{ asset('panel/js/ace/ace.js') }}"></script>
 <script src="{{ asset('panel/js/ace/emmet.js') }}"></script>
 <script src="{{ asset('panel/js/ace/ext-emmet.js') }}"></script>

@@ -4,12 +4,11 @@
 
 @section('content')
     <section class="content">
-        <div class="panel-page">
-            <h4>СОЗДАНИЕ СТРАНИЦЫ</h4>
-            <div class="btn-group">
-                <a href="{{ URL::previous() }}" class="btn btn-outline-secondary"><i class="fa fa-step-backward"></i></a>
+        @section('panel-page')
+            <div class="btn-group panel-page">
+                <a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i class="fa fa-step-backward"></i></a>
             </div>
-        </div>
+        @endsection
 
     </section>
 @endsection

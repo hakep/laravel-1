@@ -44,6 +44,14 @@ class PageController extends Controller
     public function update(Request $request, $id)
     {
         $page = Page::findOrFail($id);
+
+        if($request->ajax()){
+            dd($request->all());
+            $page->update($request->all());
+            return 'Данные сохранены';
+        }
+
+
         // если нажата кнопка delete, то удаляем модель
         if ($request->has('delete')) {
             $page->delete();

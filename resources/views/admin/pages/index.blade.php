@@ -4,12 +4,11 @@
 
 @section('content')
     <section class="content">
-        <div class="panel-page">
-            <h4>СПИСОК СТРАНИЦ</h4>
-            <div class="btn-group">
+        @section('panel-page')
+            <div class="btn-group panel-page">
                 <a href="{{ route('pages.create') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i> ДОБАВИТЬ СТРАНИЦУ</a>
             </div>
-        </div>
+        @endsection
         <table class="table table-sm table-hover table-bordered table-striped">
             <colgroup>
                 <col width="50">

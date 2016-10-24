@@ -1,6 +1,6 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue');
+require('laravel-elixir-vue-2');
 elixir.config.sourcemaps = false;
 
 elixir(mix => {
@@ -16,6 +16,7 @@ elixir(mix => {
         .copy('bower_components/emmet-core/emmet.js', 'public/panel/js/ace/emmet.js')
         .copy('bower_components/ace-builds/src-min-noconflict/ext-emmet.js', 'public/panel/js/ace/ext-emmet.js')
         .copy('bower_components/ace-builds/src-min-noconflict/mode-html.js', 'public/panel/js/ace/mode-html.js')
+        .copy('bower_components/ace-builds/src-min-noconflict/worker-html.js', 'public/panel/js/ace/worker-html.js')
         .copy('bower_components/ace-builds/src-min-noconflict/theme-monokai.js', 'public/panel/js/ace/theme-monokai.js')
 
     //добавляем шрифт
