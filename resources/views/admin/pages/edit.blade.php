@@ -5,14 +5,17 @@
 @section('content')
     <section class="content">
         <form action="{{ route('pages.update', $page->id) }}" method="POST" id="edit">
-            {{ method_field('PUT') }}
             {{ csrf_field() }}
             @section('panel-page')
-            <div class="btn-group panel-page">
-                <a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i class="fa fa-step-backward"></i></a>
-                <button v-on:click="save" type="submit" name="save" value="save" class="btn btn-outline-success"><i class="fa fa-check"></i> СОХРАНИТЬ</button>
-                <button v-on:click="del" type="submit" name="delete" value="delete" class="btn btn-outline-danger"><i class="fa fa-trash"></i> УДАЛИТЬ</button>
-            </div>
+                <div class="btn-group panel-page">
+                    <a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i class="fa fa-step-backward"></i></a>
+                    <button v-on:click="save" type="submit" name="save" value="save" class="btn btn-outline-success"><i
+                                class="fa fa-check"></i> СОХРАНИТЬ
+                    </button>
+                    <button v-on:click="del" type="submit" name="delete" value="delete" class="btn btn-outline-danger">
+                        <i class="fa fa-trash"></i> УДАЛИТЬ
+                    </button>
+                </div>
             @endsection
             <ul class="nav nav-tabs">
                 <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab1">КОД</a></li>
@@ -33,30 +36,6 @@
 @endsection
 
 @push('scripts')
-<script>
-    window.Laravel = { csrfToken: '{{ csrf_token() }}' };
-    var formData = new FormData();
-    console.log(formData.getAll($("#edit")));
-
-    new Vue({
-        el: '.panel-page',
-        data: {
-            message: 'Сохранение'
-        },
-        methods: {
-            save: function(){
-
-                   this.$http.patch('{{ route('pages.update', $page->id) }}', formData).then((response) => {
-                        console.log(response.body);
-                    });
-
-            },
-            del: function(){
-                console.log("Удаление");
-            }
-        }
-    });
-</script>
 <script src="{{ asset('panel/js/ace/ace.js') }}"></script>
 <script src="{{ asset('panel/js/ace/emmet.js') }}"></script>
 <script src="{{ asset('panel/js/ace/ext-emmet.js') }}"></script>
@@ -81,9 +60,36 @@
         exec: function (editor) {
             $.post("{{ route('pages.update', $page->id) }}",
                     {_method: 'PUT', _token: $('input[name="_token"]').val(), content: editor.getValue()},
-                    function () {alert("Страница сохранена!");}
+                    function () {
+                        alert("Страница сохранена!");
+                    }
             );
         }, readOnly: true
+    });
+</script>
+<script>
+    window.Laravel = {csrfToken: '{{ csrf_token() }}'};
+
+
+    new Vue({
+        el: '.panel-page',
+        data: {
+            message: 'Сохранение'
+        },
+        methods: {
+            save: function () {
+                var formData = {};
+                formData.content = editor.getSession().getValue();
+                this.$http.patch('{{ route('pages.update', $page->id) }}', formData).then((response) => {
+                    console.log(response.body);
+                });
+            },
+            del: function () {
+                this.$http.delete('{{ route('pages.destroy', $page->id) }}').then((response) => {
+                    window.location.href= JSON.parse(response.body).redirect_url;
+                });
+            }
+        }
     });
 </script>
 @endpush
