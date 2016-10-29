@@ -19,6 +19,18 @@ a {
     color: #3097D1;
     text-decoration: none; }
 
+#snackbar {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 99999;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.5);
+  color: #ddd;
+  text-transform: uppercase;
+  font-size: 1rem; }
+
 #header {
   width: 100%;
   height: 50px;

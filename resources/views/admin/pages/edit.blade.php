@@ -9,12 +9,8 @@
             @section('panel-page')
                 <div class="btn-group panel-page">
                     <a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i class="fa fa-step-backward"></i></a>
-                    <button v-on:click="save" type="submit" name="save" value="save" class="btn btn-outline-success"><i
-                                class="fa fa-check"></i> СОХРАНИТЬ
-                    </button>
-                    <button v-on:click="del" type="submit" name="delete" value="delete" class="btn btn-outline-danger">
-                        <i class="fa fa-trash"></i> УДАЛИТЬ
-                    </button>
+                    <button @click="save" class="btn btn-outline-success"><i class="fa fa-check"></i> СОХРАНИТЬ</button>
+                    <button @click="del" class="btn btn-outline-danger"><i class="fa fa-trash"></i> УДАЛИТЬ</button>
                 </div>
             @endsection
             <ul class="nav nav-tabs">
@@ -60,8 +56,8 @@
         exec: function (editor) {
             $.post("{{ route('pages.update', $page->id) }}",
                     {_method: 'PUT', _token: $('input[name="_token"]').val(), content: editor.getValue()},
-                    function () {
-                        alert("Страница сохранена!");
+                    function (data) {
+                        snackbar(data);
                     }
             );
         }, readOnly: true
@@ -73,20 +69,18 @@
 
     new Vue({
         el: '.panel-page',
-        data: {
-            message: 'Сохранение'
-        },
         methods: {
             save: function () {
                 var formData = {};
                 formData.content = editor.getSession().getValue();
                 this.$http.patch('{{ route('pages.update', $page->id) }}', formData).then((response) => {
-                    console.log(response.body);
-                });
+                snackbar(response.body);
+            });
             },
             del: function () {
                 this.$http.delete('{{ route('pages.destroy', $page->id) }}').then((response) => {
-                    window.location.href= JSON.parse(response.body).redirect_url;
+                    window.location.href= response.json().redirect_url;
+                    snackbar(response.json().message);
                 });
             }
         }

@@ -8,3 +8,12 @@
 require('./bootstrap');
 
 
+//Vue.component('example', require('./components/Example.vue'));
+
+
+//Vue.component('oz', require('./components/oz.vue'));
+//new Vue ({
+//    el: '#app'
+//});
+
+

@@ -43,27 +43,15 @@ class PageController extends Controller
 
     public function update(Request $request, $id)
     {
-        $page = Page::findOrFail($id);
+       $page = Page::findOrFail($id);
 
-
-        // если нажата кнопка delete, то удаляем модель
-        if ($request->has('delete')) {
-            $page->delete();
-            return redirect()->route('pages.index');
-        }
-
-
-
-
-
-        if ($request->ajax()) {
+       if ($request->ajax()) {
             $page->update($request->all());
             return 'Данные сохранены';
         } else {
             $page->update($request->all());
             return redirect()->back();
         }
-
     }
 
 
@@ -72,7 +60,7 @@ class PageController extends Controller
         $page = Page::findOrFail($id);
         if ($request->ajax()) {
             $page->delete();
-            return response()->json(['redirect_url' => route('pages.index')]);
+            return response()->json(['message' => 'Страница удалена','redirect_url' => route('pages.index')]);
         } else {
             $page->delete();
             return redirect()->route('pages.index');

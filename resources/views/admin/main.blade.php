@@ -10,7 +10,7 @@
     <link rel='stylesheet' href="{{ asset('panel/css/style.css') }}">
     <title>@yield('title')</title>
 </head>
-<body class="admin">
+<body class="admin" id="admin">
 
 @include('admin.components.header')
 

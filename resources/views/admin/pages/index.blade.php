@@ -44,9 +44,10 @@
                             <i class="fa fa-pencil"></i>
                         </a>
 
-                        <form style="display: inline;" action="{{ route('pages.destroy', $page->id) }}" method="POST">{{ method_field('DELETE') }} {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger" data-toggle="tooltip" title="Удалить"><i class="fa fa-trash"></i></button>
-                        </form>
+                        {{--<form style="display: inline;" action="{{ route('pages.destroy', $page->id) }}" method="POST">{{ method_field('DELETE') }} {{ csrf_field() }}--}}
+                            {{--<button type="submit" class="btn btn-danger" data-toggle="tooltip" title="Удалить"><i class="fa fa-trash"></i></button>--}}
+                        {{--</form>--}}
+                        <button v-on:click="del({{ $page->id }})" class="btn btn-danger" data-toggle="tooltip" title="Удалить"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
             @endforeach
@@ -56,3 +57,24 @@
     </section>
 @endsection
 
+
+@push('scripts')
+<script>
+    window.Laravel = {csrfToken: '{{ csrf_token() }}'};
+
+
+    new Vue({
+        el: '.content',
+        methods: {
+            del: function (xx) {
+                console.log(xx);
+                {{--alert({{ $page->id }});--}}
+                this.$http.delete('{{ route('pages.edit', $page->id) }}').then((response) => {
+//                    document.location.reload(true);
+                    snackbar(response.json().message);1
+            });
+            }
+        }
+    });
+</script>
+@endpush

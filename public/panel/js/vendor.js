@@ -108,6 +108,9 @@ Vue.http.interceptors.push(function (request, next) {
  * allows your team to easily build robust real-time web applications.
  */
 
+//import Snackbar from 'vue-snackbar';
+
+
 // import Echo from "laravel-echo"
 
 // window.Echo = new Echo({
@@ -41543,6 +41546,15 @@ module.exports = function(module) {
  */
 
 __webpack_require__(0);
+
+
+//Vue.component('example', require('./components/Example.vue'));
+
+
+//Vue.component('oz', require('./components/oz.vue'));
+//new Vue ({
+//    el: '#app'
+//});
 
 
 
