@@ -95,13 +95,19 @@ a {
   position: relative;
   padding-left: 200px;
 
-  &.hide-aside {
+  &.small-aside {
     padding-left: 70px;
     #aside {
       width: 70px;
       span {
         display: none;
       }
+    }
+  }
+  &.hide-aside {
+    padding-left: 0px;
+    #aside {
+        display: none;
     }
   }
 }

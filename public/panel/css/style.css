@@ -70,12 +70,16 @@ a {
   padding-top: 52px;
   position: relative;
   padding-left: 200px; }
-  .wrapper-content.hide-aside {
+  .wrapper-content.small-aside {
     padding-left: 70px; }
-    .wrapper-content.hide-aside #aside {
+    .wrapper-content.small-aside #aside {
       width: 70px; }
-      .wrapper-content.hide-aside #aside span {
+      .wrapper-content.small-aside #aside span {
         display: none; }
+  .wrapper-content.hide-aside {
+    padding-left: 0px; }
+    .wrapper-content.hide-aside #aside {
+      display: none; }
 
 #aside {
   background-color: #333;

@@ -43,27 +43,16 @@ class PageController extends Controller
 
     public function update(Request $request, $id)
     {
-       $page = Page::findOrFail($id);
-
-       if ($request->ajax()) {
-            $page->update($request->all());
-            return 'Данные сохранены';
-        } else {
-            $page->update($request->all());
-            return redirect()->back();
-        }
+        $page = Page::findOrFail($id);
+        $page->update($request->all());
+        return response()->json(['message' => 'Данные сохранены']);
     }
 
 
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
         $page = Page::findOrFail($id);
-        if ($request->ajax()) {
-            $page->delete();
-            return response()->json(['message' => 'Страница удалена','redirect_url' => route('pages.index')]);
-        } else {
-            $page->delete();
-            return redirect()->route('pages.index');
-        }
+        $page->delete();
+        return response()->json(['message' => 'Страница удалена', 'redirect_url' => route('pages.index')]);
     }
 }
