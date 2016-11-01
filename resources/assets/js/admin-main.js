@@ -48,7 +48,7 @@ $('#header #button-aside').click(function () {
 //функция всплывающее уведомление слева внизу
 function snackbar(body){
     if (!$('#snackbar').length>0) {
-        $('body').append('<span id="snackbar">' + body + '</span>').find('#snackbar').fadeOut(3000, function () {
+        $('body').append('<span id="snackbar">' + body + '</span>').find('#snackbar').fadeOut(4000, function () {
             this.remove()
         });
     }

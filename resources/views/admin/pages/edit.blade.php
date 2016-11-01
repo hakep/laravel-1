@@ -14,17 +14,18 @@
                 </div>
             @endsection
             <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab1">КОД</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab1">КОД</a></li>
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab3">НАСТРОЙКИ</a></li>
+                <li class="nav-item float-lg-right"><a class="nav-link" href="#">{{ $page->title }}</a></li>
             </ul>
 
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="tab1">
+                <div class="tab-pane fade" id="tab1">
                     <textarea name="content" style="display: none;"></textarea>
                     <div id="editor">{{ $page->content }}</div>
                 </div>
-                <div class="tab-pane fade" id="tab2">2</div>
+                <div class="tab-pane fade in active" id="tab2"><textarea name="editor1" id="editor1" cols="45" rows="5">{{ $page->content }}</textarea></div>
                 <div class="tab-pane fade" id="tab3">3</div>
             </div>
         </form>
@@ -41,6 +42,17 @@
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/html");
     document.getElementById('editor').style.fontSize = '1rem';
+
+    // устанавливаем редактор на всю высоту
+    function adaptEditor() {
+        document.getElementById('editor').style.height = window.innerHeight - 96 + 'px';
+        editor.resize();
+    }
+    window.onresize = function() {
+        adaptEditor();
+    };
+    adaptEditor();
+
     editor.getSession().setUseWrapMode(true);
     editor.setHighlightActiveLine(false);
     editor.setShowPrintMargin(false);
@@ -48,8 +60,6 @@
         textarea.val(editor.getSession().getValue());
     });
     editor.setAutoScrollEditorIntoView(true);
-    editor.setOption("minLines", 20);
-    editor.setOption("maxLines", 500);
     editor.commands.addCommand({
         name: 'myCommand',
         bindKey: {win: 'Ctrl-S', mac: 'Command-S'},
@@ -86,5 +96,25 @@ new Vue({
         }
     }
 });
+</script>
+<script src="{{ asset('panel/js/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('panel/js/ckeditor/config.js') }}"></script>
+<script type="text/javascript">
+   var editor1 = CKEDITOR.replace('editor1', {
+//       uiColor: '#00ffff',
+       autoParagraph: false,
+//       enterMode: CKEDITOR.ENTER_BR,
+       allowedContent: true,
+
+
+
+
+       filebrowserBrowseUrl: '/panel/js/ckfinder/ckfinder.html',
+       filebrowserImageBrowseUrl: '/panel/js/ckfinder/ckfinder.html?type=Images',
+       filebrowserUploadUrl: '/panel/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+       filebrowserImageUploadUrl: '/panel/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+   });
+
+
 </script>
 @endpush
