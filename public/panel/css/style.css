@@ -19,6 +19,9 @@ a {
     color: #3097D1;
     text-decoration: none; }
 
+.custom-control-input {
+  position: static; }
+
 #snackbar {
   position: fixed;
   left: 1rem;

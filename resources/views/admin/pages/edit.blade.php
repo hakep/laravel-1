@@ -14,8 +14,8 @@
                 </div>
             @endsection
             <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab1">КОД</a></li>
-                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
+                <li class="nav-item"><a id="ace" class="nav-link" data-toggle="tab" href="#tab1">КОД</a></li>
+                <li class="nav-item"><a id="ckeditor" class="nav-link active" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab3">НАСТРОЙКИ</a></li>
                 <li class="nav-item float-lg-right"><a class="nav-link" href="#">{{ $page->title }}</a></li>
             </ul>
@@ -42,23 +42,15 @@
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/html");
     document.getElementById('editor').style.fontSize = '1rem';
-
     // устанавливаем редактор на всю высоту
-    function adaptEditor() {
-        document.getElementById('editor').style.height = window.innerHeight - 96 + 'px';
-        editor.resize();
-    }
-    window.onresize = function() {
-        adaptEditor();
-    };
-    adaptEditor();
-
+    document.getElementById('editor').style.height = window.innerHeight - 96 + 'px';
     editor.getSession().setUseWrapMode(true);
     editor.setHighlightActiveLine(false);
     editor.setShowPrintMargin(false);
     editor.getSession().on("change", function () {
         textarea.val(editor.getSession().getValue());
     });
+    editor.$blockScrolling = Infinity;
     editor.setAutoScrollEditorIntoView(true);
     editor.commands.addCommand({
         name: 'myCommand',
@@ -75,13 +67,18 @@
 </script>
 <script>
 window.Laravel = {csrfToken: '{{ csrf_token() }}'};
+var whatContent;
 
 new Vue({
     el: '.panel-page',
     methods: {
         save: function () {
             var formData = {};
-            formData.content = editor.getSession().getValue();
+            if(whatContent == 'ace'){
+                formData.content = editor.getSession().getValue();
+            } else {
+                formData.content = CKEDITOR.instances['editor1'].getData()
+            }
             this.$http.patch('{{ route('pages.update', $page->id) }}', formData).then((response) => {
                 snackbar(response.json().message);
             });
@@ -98,16 +95,12 @@ new Vue({
 });
 </script>
 <script src="{{ asset('panel/js/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('panel/js/ckeditor/config.js') }}"></script>
 <script type="text/javascript">
    var editor1 = CKEDITOR.replace('editor1', {
-//       uiColor: '#00ffff',
+//       uiColor: '#000000',
        autoParagraph: false,
-//       enterMode: CKEDITOR.ENTER_BR,
        allowedContent: true,
-
-
-
+       sourceAreaTabSize: 20,
 
        filebrowserBrowseUrl: '/panel/js/ckfinder/ckfinder.html',
        filebrowserImageBrowseUrl: '/panel/js/ckfinder/ckfinder.html?type=Images',
@@ -115,6 +108,13 @@ new Vue({
        filebrowserImageUploadUrl: '/panel/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
    });
 
-
+   $('#ace').click(function(){
+       whatContent = 'ace';
+       editor.setValue(CKEDITOR.instances['editor1'].getData());
+   });
+   $('#ckeditor').click(function(){
+       whatContent = 'ckeditor';
+       CKEDITOR.instances['editor1'].setData(editor.getValue());
+   });
 </script>
 @endpush

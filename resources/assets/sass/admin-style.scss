@@ -33,7 +33,10 @@ a {
   }
 }
 
-
+//исправление checkbox
+.custom-control-input {
+  position: static;
+}
 //уведомление нижний левый угол
 #snackbar{
   position:fixed;
