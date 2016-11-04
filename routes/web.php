@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('site.pages.index');
 });
 
+Route::get('/{url}.html', ['as' => 'url', 'uses' => 'IndexController@page']);
+
+
+
 Route::group(['prefix' => 'admin'], function(){
 
     Route::get('/', function(){

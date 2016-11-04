@@ -17,7 +17,7 @@
                 <li class="nav-item"><a id="ace" class="nav-link" data-toggle="tab" href="#tab1">КОД</a></li>
                 <li class="nav-item"><a id="ckeditor" class="nav-link active" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab3">НАСТРОЙКИ</a></li>
-                <li class="nav-item float-lg-right"><a class="nav-link" href="#">{{ $page->title }}</a></li>
+                <li class="nav-item float-lg-right"><a class="nav-link" href="{{ route('url', $page->url) }}" target="_blank">{{ $page->title }}</a></li>
             </ul>
 
             <div class="tab-content">

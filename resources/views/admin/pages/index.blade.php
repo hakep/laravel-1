@@ -38,7 +38,7 @@
                         </label>
                     </td>
                     <td>
-                        <a href="/" target="_blank" class="btn btn-success btn-xs" data-toggle="tooltip"
+                        <a href="{{ route('url', $page->url) }}" target="_blank" class="btn btn-success btn-xs" data-toggle="tooltip"
                            title="Перейти">
                             <i class="fa fa-forward"></i>
                         </a>
