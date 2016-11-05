@@ -15,8 +15,8 @@
             @endsection
             <ul class="nav nav-tabs">
                 <li class="nav-item"><a id="ace" class="nav-link" data-toggle="tab" href="#tab1">КОД</a></li>
-                <li class="nav-item"><a id="ckeditor" class="nav-link active" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab3">НАСТРОЙКИ</a></li>
+                <li class="nav-item"><a id="ckeditor" class="nav-link" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab3">НАСТРОЙКИ</a></li>
                 <li class="nav-item float-lg-right"><a class="nav-link" href="{{ route('url', $page->url) }}" target="_blank">{{ $page->title }}</a></li>
             </ul>
 
@@ -25,8 +25,44 @@
                     <textarea name="content" style="display: none;"></textarea>
                     <div id="editor">{{ $page->content }}</div>
                 </div>
-                <div class="tab-pane fade in active" id="tab2"><textarea name="editor1" id="editor1" cols="45" rows="5">{{ $page->content }}</textarea></div>
-                <div class="tab-pane fade" id="tab3">3</div>
+                <div class="tab-pane fade" id="tab2"><textarea name="editor1" id="editor1" cols="45" rows="5">{{ $page->content }}</textarea></div>
+                <div class="tab-pane fade in active" id="tab3">
+                    <div class="">
+                        <div class="card">
+                            <div class="card-block">
+                                            <div class="form-group">
+                                    <label for="title" class="text-muted small">Заголовок</label>
+                                    <input type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" value="{{ $page->title }}">
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="url" class="text-muted small">url</label>
+                                    <input type="text" class="form-control" id="url" placeholder="Введите url страницы" value="{{ $page->url }}">
+                                    <span class="form-text text-muted">{{ route('url', $page->url) }}</span>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="custom-control custom-checkbox">published_at
+                                        <input type="checkbox"
+                                               class="custom-control-input" {{ $page->published_at ? 'checked' : '' }}>
+                                        <span class="custom-control-indicator"></span>
+                                    </label>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="template">Шаблон</label>
+                                    <select class="form-control" id="template">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </section>
