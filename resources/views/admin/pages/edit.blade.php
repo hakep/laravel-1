@@ -14,33 +14,25 @@
                 </div>
             @endsection
             <ul class="nav nav-tabs">
-                <li class="nav-item"><a id="ace" class="nav-link" data-toggle="tab" href="#tab1">КОД</a></li>
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab1">НАСТРОЙКИ</a></li>
                 <li class="nav-item"><a id="ckeditor" class="nav-link" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
-                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab3">НАСТРОЙКИ</a></li>
+                <li class="nav-item"><a id="ace" class="nav-link" data-toggle="tab" href="#tab3">КОД</a></li>
                 <li class="nav-item float-lg-right"><a class="nav-link" href="{{ route('url', $page->url) }}" target="_blank">{{ $page->title }}</a></li>
             </ul>
-
             <div class="tab-content">
-                <div class="tab-pane fade" id="tab1">
-                    <textarea name="content" style="display: none;"></textarea>
-                    <div id="editor">{{ $page->content }}</div>
-                </div>
-                <div class="tab-pane fade" id="tab2"><textarea name="editor1" id="editor1" cols="45" rows="5">{{ $page->content }}</textarea></div>
-                <div class="tab-pane fade in active" id="tab3">
+                <div class="tab-pane fade in active" id="tab1">
                     <div class="">
                         <div class="card">
                             <div class="card-block">
                                             <div class="form-group">
-                                    <label for="title" class="text-muted small">Заголовок</label>
-                                    <input type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" value="{{ $page->title }}">
+                                    <label for="title" class="text-muted small">Название страницы</label>
+                                    <input v-model="url" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" value="{{ $page->title }}">
                                 </div>
-                                <hr>
                                 <div class="form-group">
                                     <label for="url" class="text-muted small">url</label>
-                                    <input type="text" class="form-control" id="url" placeholder="Введите url страницы" value="{{ $page->url }}">
-                                    <span class="form-text text-muted">{{ route('url', $page->url) }}</span>
+                                    <input type="text" class="form-control" id="url" placeholder="Введите url страницы"  v-bind:value="url | uppercase">
+                                    <span class="form-text text-muted" v-text="'{{ url('/') }}/' + url + '.html'"></span>
                                 </div>
-                                <hr>
                                 <div class="form-group">
                                     <label class="custom-control custom-checkbox">published_at
                                         <input type="checkbox"
@@ -48,7 +40,6 @@
                                         <span class="custom-control-indicator"></span>
                                     </label>
                                 </div>
-                                <hr>
                                 <div class="form-group">
                                     <label for="template">Шаблон</label>
                                     <select class="form-control" id="template">
@@ -62,6 +53,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="tab-pane fade" id="tab2"><textarea name="editor1" id="editor1" cols="45" rows="5">{{ $page->content }}</textarea></div>
+                <div class="tab-pane fade" id="tab3">
+                    <textarea name="content" style="display: none;"></textarea>
+                    <div id="editor">{{ $page->content }}</div>
                 </div>
             </div>
         </form>
@@ -104,6 +100,14 @@
 <script>
 window.Laravel = {csrfToken: '{{ csrf_token() }}'};
 var whatContent;
+
+new Vue({
+   el: '#tab1',
+    data: {
+        url: '{{ $page->url }}'
+    }
+});
+
 
 new Vue({
     el: '.panel-page',
