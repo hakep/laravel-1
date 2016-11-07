@@ -2,14 +2,16 @@
 
 @section('title', 'Страницы')
 
+@section('panel-page')
+<div class="btn-group panel-page">
+    <a href="{{ route('pages.create') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i>
+        ДОБАВИТЬ СТРАНИЦУ</a>
+</div>
+@endsection
+
 @section('content')
     <section class="content">
-        @section('panel-page')
-            <div class="btn-group panel-page">
-                <a href="{{ route('pages.create') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i>
-                    ДОБАВИТЬ СТРАНИЦУ</a>
-            </div>
-        @endsection
+
         <table class="table table-sm table-hover table-bordered table-striped">
             <colgroup>
                 <col width="50">

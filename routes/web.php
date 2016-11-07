@@ -1,24 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('site.pages.index');
-});
-
-Route::get('/{url}.html', ['as' => 'url', 'uses' => 'IndexController@page']);
-
-
-
+//маршруты для админки
 Route::group(['prefix' => 'admin'], function(){
 
     Route::get('/', function(){
@@ -27,3 +9,12 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::resource('pages', 'PageController');
 });
+
+
+
+//маршруты для самого сайта
+Route::get('/', function () {
+    return view('site.pages.index');
+});
+
+Route::get('/{url}', ['as' => 'url', 'uses' => 'IndexController@page']);
