@@ -6,6 +6,8 @@ use App\Page;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Storage;
+
 
 class PageController extends Controller
 {
@@ -37,7 +39,24 @@ class PageController extends Controller
     public function edit($id)
     {
         $page = Page::Find($id);
-        return view('admin.pages.edit')->with('page', $page);
+
+
+
+        // список файлов в папке с шаблонами
+        $templateList = Storage::disk('template')->files();
+        // подготавливаем данные для передачи vue select
+        $templateList = collect($templateList);
+        $templateList = $templateList->map(function ($item, $key) {
+            return [
+                'text'              => substr($item, 0, -10),
+                'value'             => substr($item, 0, -10),
+            ];
+        });
+
+
+
+
+        return view('admin.pages.edit')->with(['page' => $page, 'templateList' => $templateList]);
     }
 
 

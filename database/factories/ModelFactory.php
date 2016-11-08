@@ -27,7 +27,7 @@ $factory->define(App\Page::class, function () {
     $faker = \Faker\Factory::create('ru_RU');
 
     return [
-        'url'   => $faker->unique()->slug($maxNbChars = 3),
+        'url'   => $faker->unique()->slug($maxNbChars = 2),
         'title'   => $faker->sentence(3),
         'published_at' => $faker->boolean,
         'content'  => $faker->realText($maxNbChars = 400, $indexSize = 2),

@@ -23,36 +23,34 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tab1">
-                <div class="">
-                    <div class="card">
-                        <div class="card-block">
-                            <div class="form-group">
-                                <label for="title" class="text-muted small">Название страницы</label>
-                                <input v-model="title" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" v-bind:value="title">
-                            </div>
-                            <div class="form-group">
-                                <label for="url" class="text-muted small">url</label>
-                                <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
-                                <span class="form-text text-muted" v-text="'{{ url('/') }}/' + url"></span>
-                            </div>
-                            <div class="form-group">
-                                <label class="custom-control custom-checkbox"><span v-text="published_at"></span>
-                                    <input type="checkbox"  v-model="checked"
-                                           class="custom-control-input">
-                                    <span class="custom-control-indicator"></span>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label for="template">Шаблон</label>
-                                <select class="form-control" id="template">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
+                <div class="card">
+                    <div class="card-block">
+                        <div class="form-group">
+                            <label for="title" class="text-muted small">Название страницы</label>
+                            <input v-model="title" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" v-bind:value="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="url" class="text-muted small">url</label>
+                            <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
+                            <span class="form-text text-muted" v-text="'{{ url('/') }}/' + url"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox"><span v-text="published_at"></span>
+                                <input type="checkbox"  v-model="checked"
+                                       class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="template">Шаблон</label>
+                            <select class="form-control" id="template" v-model="template">
+                                <option v-for="option in options" :value="option.value">
+                                    @{{ option.text }}
+                                </option>
+                            </select>
                         </div>
                     </div>
-                </div>
+                </div>        <pre>@{{ $data }}</pre>
             </div>
 
             <div class="tab-pane fade" id="tab2">
@@ -109,7 +107,9 @@ var tab1 = new Vue({
     data: {
         title: '{{ $page->title }}',
         url: '{{ $page->url }}',
-        checked: '{{ $page->published_at }}'
+        checked: '{{ $page->published_at }}',
+        template: '{{ $page->template }}',
+        options: {!! $templateList !!},
     },
     watch: {
         title: function(str){
@@ -137,6 +137,7 @@ new Vue({
             formData.title = tab1.title;
             formData.url = tab1.url;
             formData.published_at = tab1.checked;
+            formData.template = tab1.template;
 
             if(whatContent == 'ace'){
                 formData.content = editor.getSession().getValue();
