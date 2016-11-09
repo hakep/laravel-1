@@ -44,13 +44,13 @@
                         <div class="form-group">
                             <label for="template">Шаблон</label>
                             <select class="form-control" id="template" v-model="template">
-                                <option v-for="option in options" :value="option.value">
-                                    @{{ option.text }}
-                                </option>
+                                <option v-for='option in {{ $templateList }}' :value="option">
+                                    @{{ option }}
                             </select>
                         </div>
                     </div>
-                </div>        <pre>@{{ $data }}</pre>
+                </div>
+                {{--<pre>@{{ $data }}</pre>--}}
             </div>
 
             <div class="tab-pane fade" id="tab2">
@@ -109,7 +109,6 @@ var tab1 = new Vue({
         url: '{{ $page->url }}',
         checked: '{{ $page->published_at }}',
         template: '{{ $page->template }}',
-        options: {!! $templateList !!},
     },
     watch: {
         title: function(str){

@@ -46,12 +46,6 @@ class PageController extends Controller
         $templateList = Storage::disk('template')->files();
         // подготавливаем данные для передачи vue select
         $templateList = collect($templateList);
-        $templateList = $templateList->map(function ($item, $key) {
-            return [
-                'text'              => substr($item, 0, -10),
-                'value'             => substr($item, 0, -10),
-            ];
-        });
 
 
 

@@ -19,7 +19,7 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->boolean('published_at')->default(true);
             $table->text('content');
-            $table->string('template')->default('main');
+            $table->string('template')->default('main.blade.php');
             $table->timestamps();
         });
     }
