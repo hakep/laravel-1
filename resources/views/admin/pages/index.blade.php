@@ -35,7 +35,7 @@
                     <td class="text-xs-center">
                         <label class="custom-control custom-checkbox">
                             <input type="checkbox"
-                                   class="custom-control-input" {{ $page->published_at ? 'checked' : '' }}>
+                                   class="custom-control-input" {{ $page->status ? 'checked' : '' }}>
                             <span class="custom-control-indicator"></span>
                         </label>
                     </td>

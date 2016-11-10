@@ -29,7 +29,7 @@ $factory->define(App\Page::class, function () {
     return [
         'url'   => $faker->unique()->slug($maxNbChars = 2),
         'title'   => $faker->sentence(3),
-        'published_at' => $faker->boolean,
+        'status' => $faker->boolean,
         'content'  => $faker->realText($maxNbChars = 400, $indexSize = 2),
     ];
 });

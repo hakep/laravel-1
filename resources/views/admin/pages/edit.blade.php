@@ -35,7 +35,7 @@
                             <span class="form-text text-muted" v-text="'{{ url('/') }}/' + url"></span>
                         </div>
                         <div class="form-group">
-                            <label class="custom-control custom-checkbox"><span v-text="published_at"></span>
+                            <label class="custom-control custom-checkbox"><span v-text="status"></span>
                                 <input type="checkbox"  v-model="checked"
                                        class="custom-control-input">
                                 <span class="custom-control-indicator"></span>
@@ -47,6 +47,18 @@
                                 <option v-for='option in {{ $templateList }}' :value="option">
                                     @{{ option }}
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="meta_title" class="text-muted small">meta_title</label>
+                            <input v-model="meta_title" type="text" class="form-control" id="meta_title" placeholder="Введите title страницы" v-bind:value="meta_title">
+                        </div>
+                        <div class="form-group">
+                            <label for="meta_keywords" class="text-muted small">meta_keywords</label>
+                            <input v-model="meta_keywords" type="text" class="form-control" id="meta_keywords" placeholder="Введите keywords страницы" v-bind:value="meta_keywords">
+                        </div>
+                        <div class="form-group">
+                            <label for="meta_description" class="text-muted small">meta_description</label>
+                            <input v-model="meta_description" type="text" class="form-control" id="meta_description" placeholder="Введите description страницы" v-bind:value="meta_description">
                         </div>
                     </div>
                 </div>
@@ -66,9 +78,9 @@
 @endsection
 
 @push('scripts')
+
+{{--редактор Ace--}}
 <script src="{{ asset('panel/js/ace/ace.js') }}"></script>
-<script src="{{ asset('panel/js/ace/emmet.js') }}"></script>
-<script src="{{ asset('panel/js/ace/ext-emmet.js') }}"></script>
 <script>
     var editor = ace.edit("editor");
     var textarea = $('textarea[name="content"]');
@@ -98,17 +110,53 @@
         }, readOnly: true
     });
 </script>
+
+{{--Редактор ckeditor--}}
+<script src="{{ asset('panel/js/ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript">
+    var editor1 = CKEDITOR.replace('editor1', {
+        autoParagraph: false,
+        allowedContent: true,
+        filebrowserBrowseUrl: '/panel/js/ckfinder/ckfinder.html',
+        filebrowserImageBrowseUrl: '/panel/js/ckfinder/ckfinder.html?type=Images',
+        filebrowserUploadUrl: '/panel/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '/panel/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
 <script>
 window.Laravel = {csrfToken: '{{ csrf_token() }}'};
 var whatContent;
+
+$('#ace').click(function(){
+    whatContent = 'ace';
+    editor.setValue(CKEDITOR.instances['editor1'].getData());
+});
+$('#ckeditor').click(function(){
+    whatContent = 'ckeditor';
+    CKEDITOR.instances['editor1'].setData(editor.getValue());
+});
+
 
 var tab1 = new Vue({
    el: '#tab1',
     data: {
         title: '{{ $page->title }}',
         url: '{{ $page->url }}',
-        checked: '{{ $page->published_at }}',
+        checked: '{{ $page->status }}',
         template: '{{ $page->template }}',
+        meta_title: '{{ $page->meta_title }}',
+        meta_keywords: '{{ $page->meta_keywords }}',
+        meta_description: '{{ $page->meta_description }}'
     },
     watch: {
         title: function(str){
@@ -117,7 +165,7 @@ var tab1 = new Vue({
         }
     },
     computed: {
-        published_at: function () {
+        status: function () {
             if(this.checked == 0){
                 return 'Страница отключена'
             } else {
@@ -135,8 +183,11 @@ new Vue({
             var formData = {};
             formData.title = tab1.title;
             formData.url = tab1.url;
-            formData.published_at = tab1.checked;
+            formData.status = tab1.checked;
             formData.template = tab1.template;
+            formData.meta_title = tab1.meta_title;
+            formData.meta_keywords = tab1.meta_keywords;
+            formData.meta_description = tab1.meta_description;
 
             if(whatContent == 'ace'){
                 formData.content = editor.getSession().getValue();
@@ -161,25 +212,5 @@ new Vue({
     }
 });
 </script>
-<script src="{{ asset('panel/js/ckeditor/ckeditor.js') }}"></script>
-<script type="text/javascript">
-   var editor1 = CKEDITOR.replace('editor1', {
-       autoParagraph: false,
-       allowedContent: true,
 
-       filebrowserBrowseUrl: '/panel/js/ckfinder/ckfinder.html',
-       filebrowserImageBrowseUrl: '/panel/js/ckfinder/ckfinder.html?type=Images',
-       filebrowserUploadUrl: '/panel/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-       filebrowserImageUploadUrl: '/panel/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-   });
-
-   $('#ace').click(function(){
-       whatContent = 'ace';
-       editor.setValue(CKEDITOR.instances['editor1'].getData());
-   });
-   $('#ckeditor').click(function(){
-       whatContent = 'ckeditor';
-       CKEDITOR.instances['editor1'].setData(editor.getValue());
-   });
-</script>
 @endpush

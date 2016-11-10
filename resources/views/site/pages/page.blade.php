@@ -1,6 +1,6 @@
 @extends('site.layouts.main')
 
-@section('title', $page->title)
+@section('title', empty($page->meta_title) ? $page->title : $page->meta_title)
 
 @section('content')
 
