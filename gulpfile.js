@@ -1,7 +1,7 @@
 const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
-elixir.config.sourcemaps = false;
+//elixir.config.sourcemaps = false;
 
 elixir(mix => {
     mix.sass('admin-vendor.scss', 'public/panel/css/vendor.css')

@@ -25,28 +25,32 @@
             <div class="tab-pane fade in active" id="tab1">
                 <div class="card">
                     <div class="card-block">
-                        <div class="form-group">
-                            <label for="title" class="text-muted small">Название страницы</label>
-                            <input v-model="title" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" v-bind:value="title">
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="title" class="text-muted small">Название страницы</label>
+                                <input v-model="title" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" v-bind:value="title">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="url" class="text-muted small">url</label>
+                                <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
+                                <span class="text-muted" v-text="'{{ url('/') }}/' + url"></span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="url" class="text-muted small">url</label>
-                            <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
-                            <span class="form-text text-muted" v-text="'{{ url('/') }}/' + url"></span>
-                        </div>
-                        <div class="form-group">
-                            <label class="custom-control custom-checkbox"><span v-text="status"></span>
-                                <input type="checkbox"  v-model="checked"
-                                       class="custom-control-input">
-                                <span class="custom-control-indicator"></span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label for="template">Шаблон</label>
-                            <select class="form-control" id="template" v-model="template">
-                                <option v-for='option in {{ $templateList }}' :value="option">
-                                    @{{ option }}
-                            </select>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="template">Шаблон</label>
+                                <select class="form-control" id="template" v-model="template">
+                                    <option v-for='option in {{ $templateList }}' :value="option" v-text="option"></option>
+
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="custom-control custom-checkbox"><span v-text="status"></span>
+                                    <input type="checkbox"  v-model="checked"
+                                           class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                </label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="meta_title" class="text-muted small">meta_title</label>
