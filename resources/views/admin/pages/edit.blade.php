@@ -27,22 +27,21 @@
                     <div class="card-block">
                         <div class="row">
                             <div class="form-group col-lg-6">
-                                <label for="title" class="text-muted small">Название страницы</label>
+                                <label for="title">Название страницы</label>
                                 <input v-model="title" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" v-bind:value="title">
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="url" class="text-muted small">url</label>
-                                <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
-                                <span class="text-muted" v-text="'{{ url('/') }}/' + url"></span>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="form-group col-lg-6">
                                 <label for="template">Шаблон</label>
                                 <select class="form-control" id="template" v-model="template">
                                     <option v-for='option in {{ $templateList }}' :value="option" v-text="option"></option>
-
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="url">url</label>
+                                <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
+                                <span class="text-muted" v-text="'{{ url('/') }}/' + url"></span>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label class="custom-control custom-checkbox"><span v-text="status"></span>
@@ -50,19 +49,24 @@
                                            class="custom-control-input">
                                     <span class="custom-control-indicator"></span>
                                 </label>
+                                <a class="btn btn-outline-info btnMeta" data-toggle="collapse" href="#collapseMeta">META ДАННЫЕ</a>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="meta_title" class="text-muted small">meta_title</label>
-                            <input v-model="meta_title" type="text" class="form-control" id="meta_title" placeholder="Введите title страницы" v-bind:value="meta_title">
-                        </div>
-                        <div class="form-group">
-                            <label for="meta_keywords" class="text-muted small">meta_keywords</label>
-                            <input v-model="meta_keywords" type="text" class="form-control" id="meta_keywords" placeholder="Введите keywords страницы" v-bind:value="meta_keywords">
-                        </div>
-                        <div class="form-group">
-                            <label for="meta_description" class="text-muted small">meta_description</label>
-                            <input v-model="meta_description" type="text" class="form-control" id="meta_description" placeholder="Введите description страницы" v-bind:value="meta_description">
+                        <div class="collapse" id="collapseMeta">
+                            <div class="form-group">
+                                <label for="meta_title">meta_title</label>
+                                <input v-model="meta_title" type="text" class="form-control" id="meta_title" placeholder="Введите title страницы" v-bind:value="meta_title">
+                            </div>
+                            <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="meta_keywords">meta_keywords</label>
+                                <textarea v-model="meta_keywords" class="form-control" id="meta_keywords" placeholder="Введите keywords страницы" rows="4" v-bind:value="meta_keywords"></textarea>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="meta_description">meta_description</label>
+                                <textarea v-model="meta_description" class="form-control" id="meta_description" placeholder="Введите description страницы" rows="4" v-bind:value="meta_description"></textarea>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>

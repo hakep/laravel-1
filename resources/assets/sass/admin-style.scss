@@ -4,6 +4,9 @@ $background-color1:#333;
 $color2: #000;
 $colorHover2: #3097D1;
 $background-color2:#ff0000;
+$color3: #000;
+$colorHover3: #3097D1;
+$background-color3:#666666;
 $aside: 200px;
 $fontSize1: 40px;
 
@@ -19,10 +22,10 @@ body {
   overflow-y: auto !important;
   padding-right: 0px !important;
 
-  background-color: $background-color1;
+  background: url("../img/micro_carbon.png") repeat;
   font: 1.4rem/1.6rem Calibri;
   font-weight: 200;
-  color: #999;
+  color: #666;
 }
 
 a {
@@ -50,8 +53,6 @@ a {
   text-transform: uppercase;
   font-size:1rem;
 }
-
-
 
 
 #header {
@@ -150,7 +151,9 @@ a {
 .content {
   position: relative;
 }
-
+.table{
+  background: #ddd;
+}
 .table td{
   vertical-align: middle;
   .custom-control-indicator{
@@ -159,10 +162,6 @@ a {
   }
 }
 
-.pagination{
-  padding-left:3rem;
-
-}
 #home{
   position: relative;
 }
@@ -176,11 +175,12 @@ a {
 
 .nav-tabs .nav-item.open .nav-link, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover, .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover {
   color: silver;
-  background-color: #333333;
+  background: url("../img/micro_carbon.png") repeat;
   box-shadow: 2px 0px 12px -2px #333;
 }
 .nav-tabs .nav-link {
-  padding: 8px 15px;
+  padding: 0px 15px;
+  line-height: 44px;
   font-size:1.1rem;
   border: none;
 }
@@ -189,7 +189,7 @@ a {
   background-color: #cccccc;
 }
 #edit .tab-content .card{
-  background-color: #333;
+  background: inherit;
   border: none;
 }
 #edit .tab-content .card label{
@@ -197,16 +197,36 @@ a {
   text-transform: lowercase;
   font-size: 20px;
   font-style: italic;
+  color: #999;
 }
-#edit .tab-content .card .form-control{
-  padding: 6px 10px;
+#edit .tab-content .card label>span{
+  margin-bottom: 0px;
+  text-transform: uppercase;
   font-size: 28px;
-  line-height: 30px;
-  color: #fff;
-  background-color: #666;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-
+  font-style: normal;
+  color: #999;
 }
+#edit input.form-control, #edit select.form-control{
+  padding: 0px 10px;
+  font-size: 28px;
+  line-height: 50px;
+  height: 50px;
+  color: #fff;
+  background-color: $background-color3;
+}
+#edit textarea.form-control{
+  padding: 0px 10px;
+  font-size: 28px;
+  color: #fff;
+  background-color: $background-color3;
+}
+
 #edit .tab-content .card .custom-checkbox{
-  margin-top: 38px;
+  margin-top: 40px;
+}
+.btnMeta{
+  float: right;
+  margin-top: 35px;
+  //background: #666;
+  //color: #ddd;
 }
