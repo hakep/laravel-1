@@ -5,7 +5,7 @@
 @section('panel-page')
 <div class="btn-group panel-page">
     <a href="{{ route('pages.create') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i>
-        ДОБАВИТЬ СТРАНИЦУ</a>
+        СОЗДАТЬ СТРАНИЦУ</a>
 </div>
 @endsection
 

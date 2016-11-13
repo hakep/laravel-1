@@ -1,87 +1,84 @@
 @extends('admin.main')
 
-@section('title', 'Редактировать страницу')
+@section('title', 'Редактирование страницы')
 
 @section('panel-page')
 <div class="btn-group panel-page">
     <a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i class="fa fa-step-backward"></i></a>
+    <a href="{{ route('pages.create') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i></a>
     <button v-on:click="save" class="btn btn-outline-success"><i class="fa fa-check"></i> СОХРАНИТЬ</button>
     <button v-on:click="destroy" class="btn btn-outline-danger"><i class="fa fa-trash"></i> УДАЛИТЬ</button>
 </div>
 @endsection
 
 @section('content')
-<section class="content">
-    <form action="{{ route('pages.update', $page->id) }}" method="POST" id="edit">
-        {{ csrf_field() }}
-
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab1">НАСТРОЙКИ</a></li>
-            <li class="nav-item"><a id="ckeditor" class="nav-link" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
-            <li class="nav-item"><a id="ace" class="nav-link" data-toggle="tab" href="#tab3">КОД</a></li>
-            <li class="nav-item float-lg-right"><a class="nav-link" href="{{ route('url', $page->url) }}" target="_blank" id="page-link">{{ $page->title }}</a></li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade in active" id="tab1">
-                <div class="card">
-                    <div class="card-block">
-                        <div class="row">
-                            <div class="form-group col-lg-6">
-                                <label for="title">Название страницы</label>
-                                <input v-model="title" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" v-bind:value="title">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="template">Шаблон</label>
-                                <select class="form-control" id="template" v-model="template">
-                                    <option v-for='option in {{ $templateList }}' :value="option" v-text="option"></option>
-                                </select>
-                            </div>
+<section class="content" id="edit">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab1">НАСТРОЙКИ</a></li>
+        <li class="nav-item"><a id="ckeditor" class="nav-link" data-toggle="tab" href="#tab2">РЕДАКТОР</a></li>
+        <li class="nav-item"><a id="ace" class="nav-link" data-toggle="tab" href="#tab3">КОД</a></li>
+        <li class="nav-item float-lg-right"><a class="nav-link" href="{{ route('url', $page->url) }}" target="_blank" id="page-link">{{ $page->title }}</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab1">
+            <div class="card">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label for="title">Название страницы</label>
+                            <input v-model="title" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" v-bind:value="title">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="template">Шаблон</label>
+                            <select class="form-control" id="template" v-model="template">
+                                <option v-for='option in {{ $templateList }}' :value="option" v-text="option"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label for="url">url</label>
+                            <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
+                            <span class="text-muted" v-text="'{{ url('/') }}/' + url"></span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label class="custom-control custom-checkbox"><span v-text="status"></span>
+                                <input type="checkbox"  v-model="checked"
+                                       class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                            <a class="btn btn-outline-info btnMeta" data-toggle="collapse" href="#collapseMeta">META ДАННЫЕ</a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="collapseMeta">
+                        <div class="form-group">
+                            <label for="meta_title">meta title</label>
+                            <input v-model="meta_title" type="text" class="form-control" id="meta_title" placeholder="Введите title страницы" v-bind:value="meta_title">
                         </div>
                         <div class="row">
-                            <div class="form-group col-lg-6">
-                                <label for="url">url</label>
-                                <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
-                                <span class="text-muted" v-text="'{{ url('/') }}/' + url"></span>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label class="custom-control custom-checkbox"><span v-text="status"></span>
-                                    <input type="checkbox"  v-model="checked"
-                                           class="custom-control-input">
-                                    <span class="custom-control-indicator"></span>
-                                </label>
-                                <a class="btn btn-outline-info btnMeta" data-toggle="collapse" href="#collapseMeta">META ДАННЫЕ</a>
-                            </div>
+                        <div class="form-group col-lg-6">
+                            <label for="meta_keywords">meta keywords</label>
+                            <textarea v-model="meta_keywords" class="form-control" id="meta_keywords" placeholder="Введите keywords страницы" rows="4" v-bind:value="meta_keywords"></textarea>
                         </div>
-                        <div class="collapse" id="collapseMeta">
-                            <div class="form-group">
-                                <label for="meta_title">meta_title</label>
-                                <input v-model="meta_title" type="text" class="form-control" id="meta_title" placeholder="Введите title страницы" v-bind:value="meta_title">
-                            </div>
-                            <div class="row">
-                            <div class="form-group col-lg-6">
-                                <label for="meta_keywords">meta_keywords</label>
-                                <textarea v-model="meta_keywords" class="form-control" id="meta_keywords" placeholder="Введите keywords страницы" rows="4" v-bind:value="meta_keywords"></textarea>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="meta_description">meta_description</label>
-                                <textarea v-model="meta_description" class="form-control" id="meta_description" placeholder="Введите description страницы" rows="4" v-bind:value="meta_description"></textarea>
-                            </div>
-                            </div>
+                        <div class="form-group col-lg-6">
+                            <label for="meta_description">meta description</label>
+                            <textarea v-model="meta_description" class="form-control" id="meta_description" placeholder="Введите description страницы" rows="4" v-bind:value="meta_description"></textarea>
+                        </div>
                         </div>
                     </div>
                 </div>
-                {{--<pre>@{{ $data }}</pre>--}}
             </div>
-
-            <div class="tab-pane fade" id="tab2">
-                <textarea title="ckeditor" name="editor1" id="editor1" cols="45" rows="5">{{ $page->content }}</textarea>
-            </div>
-            <div class="tab-pane fade" id="tab3">
-                <textarea title="ace" name="content" style="display: none;"></textarea>
-                <div id="editor">{{ $page->content }}</div>
-            </div>
+            {{--<pre>@{{ $data }}</pre>--}}
         </div>
-    </form>
+
+        <div class="tab-pane fade" id="tab2">
+            <textarea title="ckeditor" name="editor1" id="editor1" cols="45" rows="5">{{ $page->content }}</textarea>
+        </div>
+        <div class="tab-pane fade" id="tab3">
+            <textarea title="ace" name="content" style="display: none;"></textarea>
+            <div id="editor">{{ $page->content }}</div>
+        </div>
+    </div>
 </section>
 @endsection
 
@@ -110,7 +107,7 @@
         bindKey: {win: 'Ctrl-S', mac: 'Command-S'},
         exec: function (editor) {
             $.post("{{ route('pages.update', $page->id) }}",
-                    {_method: 'PUT', _token: $('input[name="_token"]').val(), content: editor.getValue()},
+                    {_method: 'PUT', _token: $('meta[name="csrf-token"]').attr('content'), content: editor.getValue()},
                     function (data) {
                         snackbar(data.message);
                     }
@@ -133,14 +130,7 @@
 </script>
 
 
-
-
-
-
-
-
-
-
+{{--vue--}}
 <script>
 window.Laravel = {csrfToken: '{{ csrf_token() }}'};
 var whatContent;
@@ -153,7 +143,6 @@ $('#ckeditor').click(function(){
     whatContent = 'ckeditor';
     CKEDITOR.instances['editor1'].setData(editor.getValue());
 });
-
 
 var tab1 = new Vue({
    el: '#tab1',
@@ -182,7 +171,6 @@ var tab1 = new Vue({
         }
     }
 });
-
 
 new Vue({
     el: '.panel-page',
@@ -220,5 +208,4 @@ new Vue({
     }
 });
 </script>
-
 @endpush

@@ -20,36 +20,25 @@ class PageController extends Controller
 
     public function create()
     {
-        return view('admin.pages.create');
+        $templateList = Storage::disk('template')->files();
+        $templateList = collect($templateList);
+
+        return view('admin.pages.create')->with('templateList', $templateList);
     }
 
 
     public function store(Request $request)
     {
-        //
+        $page = Page::create($request->all());
+//        dd($page);
+        return response()->json(['message' => 'Данные сохранены', 'redirect_url' => route('pages.edit', $page->id)]);
     }
-
-
-    public function show($id)
-    {
-        // не используется
-    }
-
 
     public function edit($id)
     {
         $page = Page::Find($id);
-
-
-
-        // список файлов в папке с шаблонами
         $templateList = Storage::disk('template')->files();
-        // подготавливаем данные для передачи vue select
         $templateList = collect($templateList);
-
-
-
-
         return view('admin.pages.edit')->with(['page' => $page, 'templateList' => $templateList]);
     }
 

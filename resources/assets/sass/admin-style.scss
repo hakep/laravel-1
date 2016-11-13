@@ -185,28 +185,28 @@ a {
   border: none;
 }
 
-#edit ul.nav-tabs{
+.content ul.nav-tabs{
   background-color: #cccccc;
 }
-#edit .tab-content .card{
+.content .tab-content .card{
   background: inherit;
   border: none;
 }
-#edit .tab-content .card label{
+.content .tab-content .card label{
   margin-bottom: 0px;
   text-transform: lowercase;
   font-size: 20px;
   font-style: italic;
   color: #999;
 }
-#edit .tab-content .card label>span{
+.content .tab-content .card label>span{
   margin-bottom: 0px;
   text-transform: uppercase;
   font-size: 28px;
   font-style: normal;
   color: #999;
 }
-#edit input.form-control, #edit select.form-control{
+.content input.form-control, .content select.form-control{
   padding: 0px 10px;
   font-size: 28px;
   line-height: 50px;
@@ -214,19 +214,29 @@ a {
   color: #fff;
   background-color: $background-color3;
 }
-#edit textarea.form-control{
+.content textarea.form-control{
   padding: 0px 10px;
   font-size: 28px;
   color: #fff;
   background-color: $background-color3;
 }
 
-#edit .tab-content .card .custom-checkbox{
+.content .tab-content .card .custom-checkbox{
   margin-top: 40px;
 }
 .btnMeta{
   float: right;
   margin-top: 35px;
-  //background: #666;
-  //color: #ddd;
+}
+a.copyright{
+  position: absolute;
+  bottom: 5px;
+  left:5px;
+  font-size: 16px;
+  color: #000;
+  text-shadow: 1px 1px 1px #222;
+}
+a.copyright:hover{
+text-decoration: none;
+  color: inherit;
 }
