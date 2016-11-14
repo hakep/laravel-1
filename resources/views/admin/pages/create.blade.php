@@ -22,9 +22,10 @@
                 <div class="card">
                     <div class="card-block">
                         <div class="row">
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-6" :class="{'has-danger': errors.title}">
                                 <label for="title">Название страницы</label>
                                 <input v-model="title" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" v-bind:value="title">
+                                <div class="form-control-feedback" v-for="error in errors.title" v-text="error"></div>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="template">Шаблон</label>
@@ -66,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                {{--<pre>@{{ $data }}</pre>--}}
+                <pre>@{{ $data }}</pre>
             </div>
 
             <div class="tab-pane fade" id="tab2">
@@ -150,7 +151,8 @@
             template: 'main.blade.php',
             meta_title: '',
             meta_keywords: '',
-            meta_description: ''
+            meta_description: '',
+            errors: {}
         },
         watch: {
             title: function(str){
@@ -190,6 +192,9 @@
                 this.$http.post('{{ route('pages.store') }}', formData).then(function(response){
                     snackbar(response.json().message);
                     window.location.href = response.json().redirect_url;
+                }, function(response){
+                    tab1.errors = response.json();
+                    console.log(response.json().title.indexOf(0));
                 });
             }
         }

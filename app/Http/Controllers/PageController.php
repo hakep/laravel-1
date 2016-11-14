@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PageRequest;
 use App\Page;
 use Illuminate\Http\Request;
 
@@ -27,10 +28,9 @@ class PageController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(PageRequest $request)
     {
         $page = Page::create($request->all());
-//        dd($page);
         return response()->json(['message' => 'Данные сохранены', 'redirect_url' => route('pages.edit', $page->id)]);
     }
 
