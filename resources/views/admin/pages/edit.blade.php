@@ -24,9 +24,10 @@
             <div class="card">
                 <div class="card-block">
                     <div class="row">
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-6" :class="{'has-danger': errors.title}">
                             <label for="title">Название страницы</label>
                             <input v-model="title" type="text" class="form-control" id="title" placeholder="Введите заголовок страницы" v-bind:value="title">
+                            <div class="form-control-feedback" v-for="error in errors.title" v-text="error"></div>
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="template">Шаблон</label>
@@ -36,9 +37,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-6" :class="{'has-danger': errors.url}">
                             <label for="url">url</label>
                             <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
+                            <div class="form-control-feedback" v-for="error in errors.url" v-text="error"></div>
                             <span class="text-muted" v-text="'{{ url('/') }}/' + url"></span>
                         </div>
                         <div class="form-group col-lg-6">
@@ -147,13 +149,15 @@ $('#ckeditor').click(function(){
 var tab1 = new Vue({
    el: '#tab1',
     data: {
+        id: '{{ $page->id }}',
         title: '{{ $page->title }}',
         url: '{{ $page->url }}',
         checked: '{{ $page->status }}',
         template: '{{ $page->template }}',
         meta_title: '{{ $page->meta_title }}',
         meta_keywords: '{{ $page->meta_keywords }}',
-        meta_description: '{{ $page->meta_description }}'
+        meta_description: '{{ $page->meta_description }}',
+        errors: {}
     },
     watch: {
         title: function(str){
@@ -178,6 +182,7 @@ new Vue({
         save: function () {
             var formData = {};
             formData.title = tab1.title;
+            formData.id = tab1.id;
             formData.url = tab1.url;
             formData.status = tab1.checked;
             formData.template = tab1.template;
@@ -194,7 +199,9 @@ new Vue({
                 snackbar(response.json().message);
                 document.getElementById('page-link').href = '{{ url('/') }}/' + tab1.url;
                 document.getElementById('page-link').innerHTML = tab1.title;
-
+                tab1.errors = {};
+            }, function(response){
+                tab1.errors = response.json();
             });
         },
         destroy: function () {

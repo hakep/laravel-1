@@ -43,7 +43,7 @@ class PageController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(PageRequest $request, $id)
     {
         $page = Page::findOrFail($id);
         $page->update($request->all());

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class PageRequest extends FormRequest
@@ -23,8 +24,14 @@ class PageRequest extends FormRequest
      */
     public function rules()
     {
+        $id = $this->request->get('id');
+//        dd($this->request->get('id'));
         return [
-            'title' => 'required|min:3|max:6',
+            'title' => 'required|max:75',
+            'url' => 'max:100|unique:pages,url,'.$id,
+            'meta_title' => 'max:75',
+            'meta_keywords' => 'max:250',
+            'meta_description' => 'max:200',
         ];
     }
 }

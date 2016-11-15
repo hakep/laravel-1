@@ -35,9 +35,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-6" :class="{'has-danger': errors.url}">
                                 <label for="url">url</label>
                                 <input v-model="url" type="text" class="form-control" id="url" placeholder="Введите url страницы" v-bind:value="url">
+                                <div class="form-control-feedback" v-for="error in errors.url" v-text="error"></div>
                                 <span class="text-muted" v-text="'{{ url('/') }}/' + url"></span>
                             </div>
                             <div class="form-group col-lg-6">
@@ -50,24 +51,27 @@
                             </div>
                         </div>
                         <div class="collapse" id="collapseMeta">
-                            <div class="form-group">
+                            <div class="form-group" :class="{'has-danger': errors.meta_title}">
                                 <label for="meta_title">meta title</label>
                                 <input v-model="meta_title" type="text" class="form-control" id="meta_title" placeholder="Введите title страницы" v-bind:value="meta_title">
+                                <div class="form-control-feedback" v-for="error in errors.meta_title" v-text="error"></div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-6" :class="{'has-danger': errors.meta_keywords}">
                                     <label for="meta_keywords">meta keywords</label>
                                     <textarea v-model="meta_keywords" class="form-control" id="meta_keywords" placeholder="Введите keywords страницы" rows="4" v-bind:value="meta_keywords"></textarea>
+                                    <div class="form-control-feedback" v-for="error in errors.meta_keywords" v-text="error"></div>
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-6" :class="{'has-danger': errors.meta_description}">
                                     <label for="meta_description">meta description</label>
                                     <textarea v-model="meta_description" class="form-control" id="meta_description" placeholder="Введите description страницы" rows="4" v-bind:value="meta_description"></textarea>
+                                    <div class="form-control-feedback" v-for="error in errors.meta_description" v-text="error"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <pre>@{{ $data }}</pre>
+                {{--<pre>@{{ $data }}</pre>--}}
             </div>
 
             <div class="tab-pane fade" id="tab2">
@@ -191,10 +195,10 @@
                 }
                 this.$http.post('{{ route('pages.store') }}', formData).then(function(response){
                     snackbar(response.json().message);
+                    tab1.errors = {};
                     window.location.href = response.json().redirect_url;
                 }, function(response){
                     tab1.errors = response.json();
-                    console.log(response.json().title.indexOf(0));
                 });
             }
         }

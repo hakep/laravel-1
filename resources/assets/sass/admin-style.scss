@@ -210,7 +210,7 @@ a {
   padding: 0px 10px;
   font-size: 28px;
   line-height: 50px;
-  height: 50px;
+  height: 50px !important;
   color: #fff;
   background-color: $background-color3;
 }
@@ -220,7 +220,12 @@ a {
   color: #fff;
   background-color: $background-color3;
 }
-
+.form-control-feedback{
+  font-size:18px;
+  line-height:18px;
+  //margin-top: 0;
+  font-style: italic;
+}
 .content .tab-content .card .custom-checkbox{
   margin-top: 40px;
 }
