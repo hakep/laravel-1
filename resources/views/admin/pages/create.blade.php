@@ -30,7 +30,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="template">Шаблон</label>
                                 <select class="form-control" id="template" v-model="template">
-                                    <option v-for='option in {{ $templateList }}' :value="option" v-text="option"></option>
+                                    <option v-for='option in {{ $templateList }}' :value="option.substr(0, option.length - 10)" v-text="option.substr(0, option.length - 10)"></option>
                                 </select>
                             </div>
                         </div>
@@ -107,13 +107,8 @@
     editor.commands.addCommand({
         name: 'myCommand',
         bindKey: {win: 'Ctrl-S', mac: 'Command-S'},
-        exec: function (editor) {
-            $.post("{{ route('pages.store') }}",
-                    {_method: 'PUT', _token: $('meta[name="csrf-token"]').attr('content'), content: editor.getValue()},
-                    function (data) {
-                        snackbar(data.message);
-                    }
-            );
+        exec: function () {
+            panel.save(); // вызываем функцию сохранения в vue экземляре
         }, readOnly: true
     });
 </script>
@@ -152,7 +147,7 @@
             title: '',
             url: '',
             checked: true,
-            template: 'main.blade.php',
+            template: 'main',
             meta_title: '',
             meta_keywords: '',
             meta_description: '',
@@ -175,7 +170,7 @@
         }
     });
 
-    new Vue({
+    var panel = new Vue({
         el: '.panel-page',
         methods: {
             save: function () {
@@ -198,6 +193,7 @@
                     tab1.errors = {};
                     window.location.href = response.json().redirect_url;
                 }, function(response){
+                    snackbar(Object.values(response.json())['0']['0']);
                     tab1.errors = response.json();
                 });
             }

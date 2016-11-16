@@ -8,6 +8,8 @@ Route::group(['prefix' => 'admin'], function(){
     });
 
     Route::resource('pages', 'PageController');
+
+    Route::get('files/{name}', ['as' => 'file', 'uses' => 'FileController@getFile']);
 });
 
 

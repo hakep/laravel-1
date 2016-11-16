@@ -39,7 +39,7 @@
                             <span class="custom-control-indicator"></span>
                         </label>
                     </td>
-                    <td>
+                    <td class="text-xs-center">
                         <a href="{{ route('url', $page->url) }}" target="_blank" class="btn btn-success btn-xs" data-toggle="tooltip"
                            title="Перейти">
                             <i class="fa fa-forward"></i>

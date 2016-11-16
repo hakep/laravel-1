@@ -19,7 +19,7 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->boolean('status')->default(true);
             $table->text('content');
-            $table->string('template')->default('main.blade.php');
+            $table->string('template')->default('main');
             $table->string('meta_title')->default('');
             $table->string('meta_keywords')->default('');
             $table->string('meta_description')->default('');

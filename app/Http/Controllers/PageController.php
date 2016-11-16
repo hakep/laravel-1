@@ -21,7 +21,7 @@ class PageController extends Controller
 
     public function create()
     {
-        $templateList = Storage::disk('template')->files();
+        $templateList = Storage::disk('layouts')->files();
         $templateList = collect($templateList);
 
         return view('admin.pages.create')->with('templateList', $templateList);
@@ -37,7 +37,7 @@ class PageController extends Controller
     public function edit($id)
     {
         $page = Page::Find($id);
-        $templateList = Storage::disk('template')->files();
+        $templateList = Storage::disk('layouts')->files();
         $templateList = collect($templateList);
         return view('admin.pages.edit')->with(['page' => $page, 'templateList' => $templateList]);
     }

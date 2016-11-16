@@ -1,4 +1,4 @@
-@extends('site.layouts.main')
+@extends('site.layouts.'.$page->template)
 
 @section('keywords', empty($page->meta_keywords) ? $page->title : $page->meta_keywords)
 @section('description', empty($page->meta_description) ? $page->title : $page->meta_description)

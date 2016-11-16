@@ -32,7 +32,7 @@
                         <div class="form-group col-lg-6">
                             <label for="template">Шаблон</label>
                             <select class="form-control" id="template" v-model="template">
-                                <option v-for='option in {{ $templateList }}' :value="option" v-text="option"></option>
+                                <option v-for='option in {{ $templateList }}' :value="option.substr(0, option.length - 10)" v-text="option.substr(0, option.length - 10)"></option>
                             </select>
                         </div>
                     </div>
@@ -107,13 +107,8 @@
     editor.commands.addCommand({
         name: 'myCommand',
         bindKey: {win: 'Ctrl-S', mac: 'Command-S'},
-        exec: function (editor) {
-            $.post("{{ route('pages.update', $page->id) }}",
-                    {_method: 'PUT', _token: $('meta[name="csrf-token"]').attr('content'), content: editor.getValue()},
-                    function (data) {
-                        snackbar(data.message);
-                    }
-            );
+        exec: function () {
+            panel.save(); // вызываем функцию сохранения в vue экземляре
         }, readOnly: true
     });
 </script>
@@ -149,7 +144,6 @@ $('#ckeditor').click(function(){
 var tab1 = new Vue({
    el: '#tab1',
     data: {
-        id: '{{ $page->id }}',
         title: '{{ $page->title }}',
         url: '{{ $page->url }}',
         checked: '{{ $page->status }}',
@@ -176,13 +170,13 @@ var tab1 = new Vue({
     }
 });
 
-new Vue({
+var panel = new Vue({
     el: '.panel-page',
     methods: {
-        save: function () {
+        save: function () { // функция сохранения в базе данных
             var formData = {};
+            formData.id = '{{ $page->id }}';
             formData.title = tab1.title;
-            formData.id = tab1.id;
             formData.url = tab1.url;
             formData.status = tab1.checked;
             formData.template = tab1.template;
@@ -201,6 +195,7 @@ new Vue({
                 document.getElementById('page-link').innerHTML = tab1.title;
                 tab1.errors = {};
             }, function(response){
+                snackbar(Object.values(response.json())['0']['0']);
                 tab1.errors = response.json();
             });
         },

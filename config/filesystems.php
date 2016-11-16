@@ -48,7 +48,12 @@ return [
             'root' => storage_path('app'),
         ],
 
-        'template' => [
+//        'site' => [
+//            'driver' => 'local',
+//            'root' => resource_path('views/site'),
+//        ],
+
+        'layouts' => [
             'driver' => 'local',
             'root' => resource_path('views/site/layouts'),
         ],
