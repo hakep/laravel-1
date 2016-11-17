@@ -1,10 +1,12 @@
 <?php
 
-//маршруты для админки
-Route::group(['prefix' => 'admin'], function(){
 
-    Route::get('/', function(){
-       return view('admin.index');
+//маршруты для админки
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::get('/', function () {
+        $templateList = \Storage::disk('layouts')->files();
+        return view('admin.index')->with('templateList', $templateList);
     });
 
     Route::resource('pages', 'PageController');
@@ -12,7 +14,6 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('files/{name}', ['as' => 'file', 'uses' => 'FileController@getFile']);
     Route::put('files/{name}', ['as' => 'file.update', 'uses' => 'FileController@updateFile']);
 });
-
 
 
 //маршруты для самого сайта

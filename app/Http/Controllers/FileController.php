@@ -11,7 +11,7 @@ class FileController extends Controller
     public function getFile($name)
     {
         $templateList = Storage::disk('layouts')->files();
-        $templateList = collect($templateList);
+//        $templateList = collect($templateList);
 
         $content = Storage::disk('layouts')->get($name);
 
