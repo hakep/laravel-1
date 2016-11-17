@@ -14,8 +14,10 @@ class PageController extends Controller
 {
     public function index()
     {
+        $templateList = Storage::disk('layouts')->files();
+        $templateList = collect($templateList);
         $pages = Page::paginate(10);
-        return view('admin.pages.index')->with('pages', $pages);
+        return view('admin.pages.index')->with(['pages' => $pages, 'templateList' => $templateList]);
     }
 
 

@@ -23,7 +23,7 @@
 </header>
 
 <nav id="menu1">
-    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#CollapsingNavbar">&#9776;</button>
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#CollapsingNavbar">☰</button>
     <div class="container collapse navbar-toggleable-xs " id="CollapsingNavbar">
         <ul class="nav navbar-nav row">
             <li class="nav-item"><a class="nav-link active" href="/">Главная</a></li>

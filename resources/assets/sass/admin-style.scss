@@ -1,12 +1,12 @@
 $color1: #aaa;
 $colorHover1: #fff;
-$background-color1:#333;
+$background-color1: #333;
 $color2: #000;
 $colorHover2: #3097D1;
-$background-color2:#ff0000;
+$background-color2: #ff0000;
 $color3: #000;
 $colorHover3: #3097D1;
-$background-color3:#666666;
+$background-color3: #666666;
 $aside: 200px;
 $fontSize1: 40px;
 
@@ -22,10 +22,13 @@ body {
   overflow-y: auto !important;
   padding-right: 0px !important;
 
-  background: url("../img/micro_carbon.png") repeat;
   font: 1.4rem/1.6rem Calibri;
   font-weight: 200;
   color: #666;
+}
+
+body, #header, #aside {
+  background: url("../img/micro_carbon.png") repeat;
 }
 
 a {
@@ -40,20 +43,20 @@ a {
 .custom-control-input {
   position: static;
 }
+
 //уведомление нижний левый угол
-#snackbar{
-  position:fixed;
-  left:1rem;
-  bottom:1rem;
-  z-index:99999;
+#snackbar {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 99999;
   padding: 10px 20px;
-  background: rgba(0,0,0,0.8);
-  box-shadow: 1px 2px 8px rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.8);
   color: #ddd;
   text-transform: uppercase;
-  font-size:1rem;
+  font-size: 1rem;
 }
-
 
 #header {
   width: 100%;
@@ -74,15 +77,15 @@ a {
     cursor: pointer;
     border-radius: 50%;
     &:hover, &:focus {
-       color: $colorHover1;
-     }
+      color: $colorHover1;
+    }
   }
-  .panel-page{
+  .panel-page {
     flex-basis: 100%;
-    margin-left:144px;
+    margin-left: 144px;
   }
-  .panel-page-left{
-    margin-left:14px;
+  .panel-page-left {
+    margin-left: 14px;
   }
   #button-home {
     color: $color1;
@@ -110,7 +113,7 @@ a {
   &.hide-aside {
     padding-left: 0px;
     #aside {
-        display: none;
+      display: none;
     }
   }
 }
@@ -118,7 +121,7 @@ a {
 #aside {
   width: $aside;
   position: fixed;
-  top: 50px;
+  top: 52.3px;
   left: 0%;
   bottom: 0;
   z-index: 1;
@@ -132,6 +135,7 @@ a {
       align-items: center;
       padding: 1rem 1rem;
       text-transform: uppercase;
+      border-top: 1px solid $color1;
       border-bottom: 1px solid $color1;
       color: $color1;
       &:hover, &:focus {
@@ -142,7 +146,36 @@ a {
       }
       i {
         font-size: 2rem;
-        margin-right: 1rem;
+        margin-right: 15px;
+      }
+    }
+    li:first-child a{
+      border-bottom: none;
+    }
+    .dropdown .dropdown-menu {
+      position: relative;
+      float: none;
+      margin-top: -1px;
+      max-width: 100%;
+      min-width: auto;
+      background-color: transparent;
+      li {
+          border-top: 1px solid $color1;
+        a {
+          padding: 10px 18px 10px 18px;
+          border-top: none;
+          border-bottom: none;
+          text-transform: none;
+          &:hover, &:focus {
+            border-left: 3px solid $colorHover1;
+            padding-left: 15px;
+          }
+          i {
+            font-size: 20px;
+            margin-left: 0px;
+            margin-right: 10px;
+          }
+        }
       }
     }
   }
@@ -150,21 +183,25 @@ a {
 
 .content {
   position: relative;
+  z-index: 2;
 }
-.table{
+
+.table {
   background: #ddd;
 }
-.table td{
+
+.table td {
   vertical-align: middle;
-  .custom-control-indicator{
+  .custom-control-indicator {
     width: 2rem;
     height: 100%;
   }
 }
 
-#home{
+#home {
   position: relative;
 }
+
 #editor {
   position: relative;
   top: 0;
@@ -178,35 +215,40 @@ a {
   background: url("../img/micro_carbon.png") repeat;
   box-shadow: 2px 0px 12px -2px #333;
 }
+
 .nav-tabs .nav-link {
   padding: 0px 15px;
   line-height: 44px;
-  font-size:1.1rem;
+  font-size: 1.1rem;
   border: none;
 }
 
-.content ul.nav-tabs{
+.content ul.nav-tabs {
   background-color: #cccccc;
 }
-.content .tab-content .card{
+
+.content .tab-content .card {
   background: inherit;
   border: none;
 }
-.content .tab-content .card label{
+
+.content .tab-content .card label {
   margin-bottom: 0px;
   text-transform: lowercase;
   font-size: 20px;
   font-style: italic;
   color: #999;
 }
-.content .tab-content .card label>span{
+
+.content .tab-content .card label > span {
   margin-bottom: 0px;
   text-transform: uppercase;
   font-size: 28px;
   font-style: normal;
   color: #999;
 }
-.content input.form-control, .content select.form-control{
+
+.content input.form-control, .content select.form-control {
   padding: 0px 10px;
   font-size: 28px;
   line-height: 50px;
@@ -214,34 +256,40 @@ a {
   color: #fff;
   background-color: $background-color3;
 }
-.content textarea.form-control{
+
+.content textarea.form-control {
   padding: 0px 10px;
   font-size: 28px;
   color: #fff;
   background-color: $background-color3;
 }
-.form-control-feedback{
-  font-size:18px;
-  line-height:18px;
+
+.form-control-feedback {
+  font-size: 18px;
+  line-height: 18px;
   //margin-top: 0;
   font-style: italic;
 }
-.content .tab-content .card .custom-checkbox{
+
+.content .tab-content .card .custom-checkbox {
   margin-top: 40px;
 }
-.btnMeta{
+
+.btnMeta {
   float: right;
   margin-top: 35px;
 }
-a.copyright{
+
+a.copyright {
   position: absolute;
   bottom: 5px;
-  left:5px;
+  left: 5px;
   font-size: 16px;
   color: #000;
   text-shadow: 1px 1px 1px #222;
 }
-a.copyright:hover{
-text-decoration: none;
+
+a.copyright:hover {
+  text-decoration: none;
   color: inherit;
 }

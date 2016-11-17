@@ -1,22 +1,20 @@
 @extends('admin.main')
 
-@section('title', 'Редактирование страницы')
+@section('title', 'Редактирование файла')
 
 @section('panel-page')
 <div class="btn-group panel-page">
     <a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i class="fa fa-step-backward"></i></a>
-    <a href="#" class="btn btn-outline-primary"><i class="fa fa-plus"></i></a>
-    <button v-on:click="save" class="btn btn-outline-success"><i class="fa fa-check"></i> СОХРАНИТЬ</button>
-    <button v-on:click="destroy" class="btn btn-outline-danger"><i class="fa fa-trash"></i> УДАЛИТЬ</button>
+    {{--<a href="#" class="btn btn-outline-primary"><i class="fa fa-plus"></i></a>--}}
+    <button onclick="save()" class="btn btn-outline-success"><i class="fa fa-check"></i> СОХРАНИТЬ</button>
+    {{--<button v-on:click="destroy" class="btn btn-outline-danger"><i class="fa fa-trash"></i> УДАЛИТЬ</button>--}}
 </div>
 @endsection
 
 @section('content')
 <section class="content" id="files">
-    <div>
-        <textarea title="ace" name="content" style="display: none;"></textarea>
-        <div id="editor">{{ $content }}</div>
-    </div>
+    <textarea title="ace" name="content" style="display: none;"></textarea>
+    <div id="editor">{{ $content }}</div>
 </section>
 @endsection
 
@@ -44,13 +42,16 @@
         name: 'myCommand',
         bindKey: {win: 'Ctrl-S', mac: 'Command-S'},
         exec: function () {
-            alert('save');
-            panel.save(); // вызываем функцию сохранения в vue экземляре
+            save();
         }, readOnly: true
     });
+    function save(){
+        $.post("{{ route('file.update', $name) }}",
+                {_method: 'PUT', _token: $('meta[name="csrf-token"]').attr('content'), content: editor.getValue()},
+                function (data) {
+                    snackbar(data.message);
+                }
+        );
+    }
 </script>
-
-
-
-
 @endpush
