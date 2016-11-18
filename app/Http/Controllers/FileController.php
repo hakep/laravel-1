@@ -8,14 +8,20 @@ use App\Http\Requests;
 
 class FileController extends Controller
 {
+
+    public function index()
+    {
+        $templateList = Storage::disk('layouts')->files();
+        return view('admin.files.index')->with(['templateList' => $templateList]);
+    }
+
+
     public function getFile($name)
     {
         $templateList = Storage::disk('layouts')->files();
-//        $templateList = collect($templateList);
-
         $content = Storage::disk('layouts')->get($name);
 
-        return view('admin.files.index')->with(['name' => $name, 'content' => $content, 'templateList' => $templateList]);
+        return view('admin.files.file')->with(['name' => $name, 'content' => $content, 'templateList' => $templateList]);
     }
 
 

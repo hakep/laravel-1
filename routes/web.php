@@ -5,12 +5,12 @@
 Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', function () {
-        $templateList = \Storage::disk('layouts')->files();
-        return view('admin.index')->with('templateList', $templateList);
-    });
+        return view('admin.index');
+    })->name('index');
 
     Route::resource('pages', 'PageController');
 
+    Route::get('files', ['as' => 'files.index', 'uses' => 'FileController@index']);
     Route::get('files/{name}', ['as' => 'file', 'uses' => 'FileController@getFile']);
     Route::put('files/{name}', ['as' => 'file.update', 'uses' => 'FileController@updateFile']);
 });

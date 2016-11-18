@@ -4,8 +4,8 @@
 
 @section('panel-page')
 <div class="btn-group panel-page">
-    <a href="{{ route('pages.create') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i>
-        СОЗДАТЬ СТРАНИЦУ</a>
+    <a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i class="fa fa-step-backward"></i></a>
+    <a href="{{ route('pages.create') }}" class="btn btn-outline-primary"><i class="fa fa-plus"></i></a>
 </div>
 @endsection
 
