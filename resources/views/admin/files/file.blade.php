@@ -46,7 +46,7 @@
         }, readOnly: true
     });
     function save(){
-        $.post("{{ route('file.update', $name) }}",
+        $.post("{{ route('files.update', $name) }}",
                 {_method: 'PUT', _token: $('meta[name="csrf-token"]').attr('content'), content: editor.getValue()},
                 function (data) {
                     snackbar(data.message);

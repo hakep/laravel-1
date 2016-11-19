@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label class="custom-control custom-checkbox"><span v-text="status"></span>
-                                <input type="checkbox"  v-model="checked"
+                                <input type="checkbox" v-model="checked"
                                        class="custom-control-input">
                                 <span class="custom-control-indicator"></span>
                             </label>

@@ -29,13 +29,12 @@
             </thead>
             <tbody>
             @foreach($pages as $page)
-                <tr>
+                <tr id="id-{{ $page->id }}">
                     <td>{{ $page->id }}</td>
                     <td><a href="{{ route('pages.edit', $page->id) }}">{{ $page->title }}</a></td>
                     <td class="text-xs-center">
-                        <label class="custom-control custom-checkbox">
-                            <input type="checkbox"
-                                   class="custom-control-input" {{ $page->status ? 'checked' : '' }}>
+                        <label class="custom-control custom-checkbox" data-id="{{ $page->id }}" data-status="{{ $page->status }}" @click.prevent="save('{{ route('pages.update', $page->id) }}', $event)">
+                            <input type="checkbox" class="custom-control-input" {{ $page->status ? 'checked' : '' }}>
                             <span class="custom-control-indicator"></span>
                         </label>
                     </td>
@@ -48,7 +47,7 @@
                            data-toggle="tooltip" title="Редактировать">
                             <i class="fa fa-pencil"></i>
                         </a>
-                        <button @click.stop="destroy('{{ route('pages.destroy', $page->id) }}')" class="btn btn-danger"
+                        <button @click.prevent="destroy('{{ route('pages.destroy', $page->id) }}', $event)" class="btn btn-danger"
                                 title="Удалить"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
@@ -67,14 +66,32 @@
 
     new Vue({
         el: '.content',
-        methods: {
+         methods: {
             destroy: function (url) {
+                console.log($(event.target.parentNode));
+//                var id = $(event.target).data("id");
+
                 if (confirm("Вы действительно хотите удалить страницу?")) {
-                    this.$http.delete(url).then((response) => {
+                    this.$http.delete(url).then(function(response) {
                         document.location.reload(true);
                         snackbar(response.json().message);
-                    })
-                } return false
+                    });
+                } return false;
+            },
+
+
+
+
+
+            save: function(url, event){
+                var formData = {};
+                var id = $(event.target).data("id");
+                formData.status = $(event.target).data("status");
+                formData.statusChange = true; // эта переменная нужна для валидации
+                this.$http.patch(url, formData).then(function(response) {
+                    $('#id-'+id).find('label').data("status", formData.status ? 0 : 1).find('input').attr("checked", formData.status ? null : "checked");
+                    snackbar(response.json().message);
+                });
             }
         }
     });

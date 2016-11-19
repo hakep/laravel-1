@@ -8,11 +8,13 @@ Route::group(['prefix' => 'admin'], function () {
         return view('admin.index');
     })->name('index');
 
-    Route::resource('pages', 'PageController');
+    Route::resource('pages', 'PageController', ['except' => ['show']]);
 
-    Route::get('files', ['as' => 'files.index', 'uses' => 'FileController@index']);
-    Route::get('files/{name}', ['as' => 'file', 'uses' => 'FileController@getFile']);
-    Route::put('files/{name}', ['as' => 'file.update', 'uses' => 'FileController@updateFile']);
+    Route::get('files', ['as' => 'files.index', 'uses' => 'FilesController@index']);
+    Route::get('files/{name}', ['as' => 'files', 'uses' => 'FilesController@getFile']);
+    Route::put('files/{name}', ['as' => 'files.update', 'uses' => 'FilesController@updateFile']);
+    Route::delete('files/{name}', ['as' => 'files.destroy', 'uses' => 'FilesController@updateFile']);
+
 });
 
 

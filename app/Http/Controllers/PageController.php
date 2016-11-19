@@ -48,7 +48,13 @@ class PageController extends Controller
     public function update(PageRequest $request, $id)
     {
         $page = Page::findOrFail($id);
-        $page->update($request->all());
+
+        if($request->statusChange){
+            $page->update(['status' => !$request->status]);
+        } else {
+            $page->update($request->all());
+        }
+
         return response()->json(['message' => 'Данные сохранены']);
     }
 

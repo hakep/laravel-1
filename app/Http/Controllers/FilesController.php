@@ -6,7 +6,7 @@ use Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-class FileController extends Controller
+class FilesController extends Controller
 {
 
     public function index()

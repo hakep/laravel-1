@@ -25,7 +25,10 @@ class PageRequest extends FormRequest
     public function rules()
     {
         $id = $this->request->get('id');
-//        dd($this->request->get('id'));
+
+        if($this->request->get('statusChange')){
+            return [];
+        }
         return [
             'title' => 'required|max:75',
             'url' => 'max:100|unique:pages,url,'.$id,
