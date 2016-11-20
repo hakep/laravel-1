@@ -25,15 +25,15 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($templateList as $template)
+        @foreach($layoutsList as $item)
             <tr>
-                <td><a href="{{ route('files', $template) }}">{{ $template }}</a></td>
+                <td><a href="{{ route('files', $item) }}">{{ $item }}</a></td>
                 <td class="text-xs-center">
-                    <a href="{{ route('files', $template) }}" class="btn btn-primary btn-xs"
+                    <a href="{{ route('files', $item) }}" class="btn btn-primary btn-xs"
                        data-toggle="tooltip" title="Редактировать">
                         <i class="fa fa-pencil"></i>
                     </a>
-                    <button @click.stop="destroy('{{ route('files', $template) }}')" class="btn btn-danger"
+                    <button @click.stop="destroy('{{ route('files', $item) }}')" class="btn btn-danger"
                             title="Удалить"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
@@ -53,15 +53,15 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($templateList as $template)
+        @foreach($cssList as $item)
             <tr>
-                <td><a href="{{ route('files', $template) }}">{{ $template }}</a></td>
+                <td><a href="{{ route('files', $item) }}">{{ $item }}</a></td>
                 <td class="text-xs-center">
-                    <a href="{{ route('files', $template) }}" class="btn btn-primary btn-xs"
+                    <a href="{{ route('files', $item) }}" class="btn btn-primary btn-xs"
                        data-toggle="tooltip" title="Редактировать">
                         <i class="fa fa-pencil"></i>
                     </a>
-                    <button @click.stop="destroy('{{ route('files', $template) }}')" class="btn btn-danger"
+                    <button @click.stop="destroy('{{ route('files', $item) }}')" class="btn btn-danger"
                             title="Удалить"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
@@ -82,15 +82,15 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($templateList as $template)
+        @foreach($jsList as $item)
             <tr>
-                <td><a href="{{ route('files', $template) }}">{{ $template }}</a></td>
+                <td><a href="{{ route('files', $item) }}">{{ $item }}</a></td>
                 <td class="text-xs-center">
-                    <a href="{{ route('files', $template) }}" class="btn btn-primary btn-xs"
+                    <a href="{{ route('files', $item) }}" class="btn btn-primary btn-xs"
                        data-toggle="tooltip" title="Редактировать">
                         <i class="fa fa-pencil"></i>
                     </a>
-                    <button @click.stop="destroy('{{ route('files', $template) }}')" class="btn btn-danger"
+                    <button @click.stop="destroy('{{ route('files', $item) }}')" class="btn btn-danger"
                             title="Удалить"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>

@@ -23,7 +23,6 @@
 
         <div class="col-md-10 p-a-0">
             <div class="content p-a-1">
-                <h1>{{ $page->title }}</h1>
                 {!! $page->content !!}
             </div>
         </div>

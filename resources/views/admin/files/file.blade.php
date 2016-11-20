@@ -26,7 +26,17 @@
     var editor = ace.edit("editor");
     var textarea = $('textarea[name="content"]');
     editor.setTheme("ace/theme/monokai");
-    editor.getSession().setMode("ace/mode/html");
+    console.log('{{ $name }}');
+
+    {{--if({{ str_is('*.css', $name) }}){--}}
+        {{--editor.getSession().setMode("ace/mode/css");--}}
+    {{--} else if ({{ str_is('*.js', $name) }}){--}}
+        {{--editor.getSession().setMode("ace/mode/javascript");--}}
+    {{--} else {--}}
+        {{--editor.getSession().setMode("ace/mode/html");--}}
+    {{--}--}}
+
+
     document.getElementById('editor').style.fontSize = '1rem';
     // устанавливаем редактор на всю высоту
     document.getElementById('editor').style.height = window.innerHeight - 52 + 'px';

@@ -1,7 +1,7 @@
 const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
-//elixir.config.sourcemaps = false;
+elixir.config.sourcemaps = false;
 
 elixir(mix => {
     mix.sass('admin-vendor.scss', 'public/panel/css/vendor.css')
@@ -18,6 +18,8 @@ elixir(mix => {
         './bower_components/ace-builds/src-min-noconflict/theme-monokai.js'
     ], './public/panel/js/ace/ace.js')
     .scripts('./bower_components/ace-builds/src-min-noconflict/worker-html.js', 'public/panel/js/ace/worker-html.js')
+    .scripts('./bower_components/ace-builds/src-min-noconflict/worker-css.js', 'public/panel/js/ace/worker-css.js')
+    .scripts('./bower_components/ace-builds/src-min-noconflict/worker-javascript.js', 'public/panel/js/ace/worker-javascript.js')
 
 
     //добавляем шрифт

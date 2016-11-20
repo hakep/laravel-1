@@ -11,17 +11,33 @@ class FilesController extends Controller
 
     public function index()
     {
-        $templateList = Storage::disk('layouts')->files();
-        return view('admin.files.index')->with(['templateList' => $templateList]);
+        $layoutsList = Storage::disk('layouts')->files();
+        $cssList = Storage::disk('css')->files();
+        $jsList = Storage::disk('js')->files();
+
+        return view('admin.files.index')->with(['layoutsList' => $layoutsList, 'cssList' => $cssList, 'jsList' => $jsList]);
     }
 
 
     public function getFile($name)
     {
-        $templateList = Storage::disk('layouts')->files();
-        $content = Storage::disk('layouts')->get($name);
+//        dd(str_is('*.css', $name));
 
-        return view('admin.files.file')->with(['name' => $name, 'content' => $content, 'templateList' => $templateList]);
+        if(str_is('*.css', $name)){
+            $content = Storage::disk('css')->get($name);
+        } elseif (str_is('*.js', $name)){
+            $content = Storage::disk('js')->get($name);
+        } else {
+            $content = Storage::disk('layouts')->get($name);
+        }
+
+
+
+
+
+
+
+        return view('admin.files.file')->with(['name' => $name, 'content' => $content]);
     }
 
 

@@ -48,14 +48,19 @@ return [
             'root' => storage_path('app'),
         ],
 
-//        'site' => [
-//            'driver' => 'local',
-//            'root' => resource_path('views/site'),
-//        ],
-
         'layouts' => [
             'driver' => 'local',
             'root' => resource_path('views/site/layouts'),
+        ],
+
+        'css' => [
+            'driver' => 'local',
+            'root' => public_path('css'),
+        ],
+
+        'js' => [
+            'driver' => 'local',
+            'root' => public_path('js'),
         ],
 
         'public' => [

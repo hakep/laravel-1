@@ -10,8 +10,22 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('pages', 'PageController', ['except' => ['show']]);
 
+
+
+
+
     Route::get('files', ['as' => 'files.index', 'uses' => 'FilesController@index']);
+
+
+
+
+
     Route::get('files/{name}', ['as' => 'files', 'uses' => 'FilesController@getFile']);
+
+
+
+
+
     Route::put('files/{name}', ['as' => 'files.update', 'uses' => 'FilesController@updateFile']);
     Route::delete('files/{name}', ['as' => 'files.destroy', 'uses' => 'FilesController@updateFile']);
 

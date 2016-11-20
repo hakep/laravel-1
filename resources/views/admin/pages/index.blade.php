@@ -68,21 +68,13 @@
         el: '.content',
          methods: {
             destroy: function (url) {
-                console.log($(event.target.parentNode));
-//                var id = $(event.target).data("id");
-
-                if (confirm("Вы действительно хотите удалить страницу?")) {
+                 if (confirm("Вы действительно хотите удалить страницу?")) {
                     this.$http.delete(url).then(function(response) {
                         document.location.reload(true);
                         snackbar(response.json().message);
                     });
                 } return false;
             },
-
-
-
-
-
             save: function(url, event){
                 var formData = {};
                 var id = $(event.target).data("id");
