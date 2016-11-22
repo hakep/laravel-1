@@ -31,13 +31,7 @@ class FilesController extends Controller
             $content = Storage::disk('layouts')->get($name);
         }
 
-
-
-
-
-
-
-        return view('admin.files.file')->with(['name' => $name, 'content' => $content]);
+        return view('admin.files.edit')->with(['name' => $name, 'content' => $content]);
     }
 
 

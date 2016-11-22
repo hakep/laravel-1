@@ -2,7 +2,11 @@
 
 
 //маршруты для админки
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+
+
+
 
     Route::get('/', function () {
         return view('admin.index');
@@ -10,21 +14,9 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('pages', 'PageController', ['except' => ['show']]);
 
-
-
-
-
     Route::get('files', ['as' => 'files.index', 'uses' => 'FilesController@index']);
 
-
-
-
-
     Route::get('files/{name}', ['as' => 'files', 'uses' => 'FilesController@getFile']);
-
-
-
-
 
     Route::put('files/{name}', ['as' => 'files.update', 'uses' => 'FilesController@updateFile']);
     Route::delete('files/{name}', ['as' => 'files.destroy', 'uses' => 'FilesController@updateFile']);
@@ -32,9 +24,17 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
+
+Auth::routes();
+
+
 //маршруты для самого сайта
 Route::get('/', function () {
     return view('site.pages.index');
 });
 
+
+
 Route::get('/{url}', ['as' => 'url', 'uses' => 'IndexController@page']);
+
+//dd('dk');
